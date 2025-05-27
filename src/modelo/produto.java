@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
-/**
- *
- * @author chicl
- */
+
 public class produto {
     private int id;
     private String nome;
@@ -15,13 +9,13 @@ public class produto {
     private double preço;
     private int min;
     private int max;
-    private String categoria;
-
+    private categoria categoria;
+    
     public produto() {
 
     }
 
-    public produto(int id, String nome, int unidade, double preço, int min, int max, String categoria) {
+    public produto(int id, String nome, int unidade, double preço, int min, int max, categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
@@ -79,11 +73,11 @@ public class produto {
         this.max = max;
     }
 
-    public String getCategoria() {
+    public categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(categoria categoria) {
         this.categoria = categoria;
     }
     

@@ -3,9 +3,9 @@ package modelo;
 
 
 public class categoria {
-    private string nome;
-    private string tamanho;
-    private string embalagem;
+    private String nome;
+    private String tamanho;
+    private String embalagem;
     
     public categoria () {}
     
