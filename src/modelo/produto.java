@@ -18,6 +18,7 @@ public class produto {
     private String categoria;
 
     public produto() {
+
     }
 
     public produto(int id, String nome, int unidade, double preço, int min, int max, String categoria) {
