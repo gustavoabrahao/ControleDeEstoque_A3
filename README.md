@@ -54,7 +54,7 @@ Este projeto visa:
 |-------------------------|----------------|-----------------|
 | Gustavo                 | X              | @gustavoabrahao |
 | Carlos                  | X              | @CarlosEduWeiss |
-| Bernardo                | X              |                 |
+| Bernardo                | X              | @bnsant         |
 | Roger                   | X              |                 |
 | Gabriel González Mattos | X              | @gabinhogmtts   |
 
