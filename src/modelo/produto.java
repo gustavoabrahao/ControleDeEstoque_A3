@@ -9,13 +9,13 @@ public class produto {
     private double preço;
     private int min;
     private int max;
-    private categoria categoria;
-    
+    private String categoria;
+
     public produto() {
 
     }
 
-    public produto(int id, String nome, int unidade, double preço, int min, int max, categoria categoria) {
+    public produto(int id, String nome, int unidade, double preço, int min, int max, String categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
@@ -73,22 +73,23 @@ public class produto {
         this.max = max;
     }
 
-    public categoria getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(categoria categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
     
     public String VerificacaoDeQuantidade(){
         if (this.getUnidade()<this.getMin()){
-            return "A quantidade do produto está muito baixa.";
+            return "A quantidade do produto está muito baixa, a quantidade minima é "+getMin()+" unidades";
             
         }else if(this.getUnidade()>this.getMax()){
-            return "A quantidade do produto é muito alta.";
+            return "A quantidade do produto é muito alta, a quantidade máxima é "+getMax()+" unidades";
         }else{
-            return "produto registrado com sucesso.";
+            return "produto registrado com sucesso. A quantidade é "+getUnidade()+" unidades";
         }
     }
+    
 }
