@@ -2,28 +2,28 @@
 package modelo;
 
 
-public class produto {
+public class produto{
     private int id;
     private String nome;
     private int unidade;
-    private double preço;
+    private double preco;
     private int min;
     private int max;
     private String categoria;
 
     public produto() {
-
     }
 
-    public produto(int id, String nome, int unidade, double preço, int min, int max, String categoria) {
+    public produto(int id, String nome, int unidade, double preco, int min, int max, String categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
-        this.preço = preço;
+        this.preco = preco;
         this.min = min;
         this.max = max;
         this.categoria = categoria;
     }
+    
 
     public int getId() {
         return id;
@@ -49,12 +49,12 @@ public class produto {
         this.unidade = unidade;
     }
 
-    public double getPreço() {
-        return preço;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPreço(double preço) {
-        this.preço = preço;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public int getMin() {
@@ -77,19 +77,20 @@ public class produto {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(String nomeCategoria) {
         this.categoria = categoria;
     }
     
     public String VerificacaoDeQuantidade(){
         if (this.getUnidade()<this.getMin()){
-            return "A quantidade do produto está muito baixa, a quantidade minima é "+getMin()+" unidades";
+            return "A quantidade do produto: "+getNome()+" /está muito baixa, a quantidade minima é "+getMin()+" unidades";
             
         }else if(this.getUnidade()>this.getMax()){
-            return "A quantidade do produto é muito alta, a quantidade máxima é "+getMax()+" unidades";
+            return "A quantidade do produto:"+getNome()+" /é muito alta, a quantidade máxima é "+getMax()+" unidades";
         }else{
             return "produto registrado com sucesso. A quantidade é "+getUnidade()+" unidades";
         }
     }
+    
     
 }

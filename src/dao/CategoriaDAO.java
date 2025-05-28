@@ -1,6 +1,6 @@
 package dao;
 
-import model.Categoria;
+import modelo.Categoria;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class CategoriaDAO {
     public void salvar(Categoria categoria) throws SQLException {
         String sql = "INSERT INTO categoria (nome) VALUES (?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, categoria.getNome());
+            stmt.setString(1, categoria.getNomeCategoria());
             stmt.executeUpdate();
         }
     }
@@ -42,7 +42,7 @@ public class CategoriaDAO {
     public void atualizar(Categoria categoria) throws SQLException {
         String sql = "UPDATE categoria SET nome = ? WHERE id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, categoria.getNome());
+            stmt.setString(1, categoria.getNomeCategoria());
             stmt.setInt(2, categoria.getId());
             stmt.executeUpdate();
         }

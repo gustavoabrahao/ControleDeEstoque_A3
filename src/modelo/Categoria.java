@@ -2,11 +2,11 @@ package modelo;
 
 public class Categoria {
     private int id;
-    private String nome;
+    private String nomeCategoria;
 
-    public Categoria(int id, String nome) {
+    public Categoria(int id, String nomeCategoria) {
         this.id = id;
-        this.nome = nome;
+        this.nomeCategoria = nomeCategoria;
     }
 
     public Categoria(String nome) {
@@ -21,16 +21,16 @@ public class Categoria {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeCategoria() {
+        return nomeCategoria;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeCategoria(String nome) {
+        this.nomeCategoria = nome;
     }
 
     @Override
     public String toString() {
-        return nome;
+        return nomeCategoria;
     }
 }
