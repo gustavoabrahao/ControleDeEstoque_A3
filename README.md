@@ -55,7 +55,7 @@ Este projeto visa:
 | Gustavo                 | X              | @gustavoabrahao |
 | Carlos                  | X              | @CarlosEduWeiss |
 | Bernardo                | X              | @bnsant         |
-| Roger                   | X              |                 |
+| Roger                   | X              | @rogerpk                |
 | Gabriel González Mattos | X              | @gabinhogmtts   |
 
 ## 📌 Requisitos para Rodar o Projeto
