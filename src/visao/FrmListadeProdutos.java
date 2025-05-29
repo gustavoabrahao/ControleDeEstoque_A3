@@ -88,6 +88,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
 
         JBEditar.setText("Editar");
 
+        JBExcluir.setBackground(new java.awt.Color(220, 53, 69));
         JBExcluir.setText("Excluir");
 
         JBAtualizar.setText("Atualizar");

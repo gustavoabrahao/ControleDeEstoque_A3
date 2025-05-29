@@ -70,6 +70,7 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
 
         jButton2.setText("Limpar");
 
+        jButton3.setBackground(new java.awt.Color(220, 53, 69));
         jButton3.setText("Sair");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

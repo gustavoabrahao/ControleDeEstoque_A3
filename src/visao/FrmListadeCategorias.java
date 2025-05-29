@@ -63,6 +63,7 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
 
         jToggleButton2.setText("Editar");
 
+        jToggleButton3.setBackground(new java.awt.Color(220, 53, 69));
         jToggleButton3.setText("Excluir");
 
         jToggleButton4.setText("Fechar");
