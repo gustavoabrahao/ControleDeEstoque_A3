@@ -91,6 +91,18 @@ public class produto{
             return "produto registrado com sucesso. A quantidade é "+getUnidade()+" unidades";
         }
     }
-    
-    
+     
+    public void cadastrarProduto(int id, String nome, int unidade, double preco, int min, int max, String categoria) {
+        this.id = id;
+        this.nome = nome;
+        this.unidade = unidade;
+        this.preco = preco;
+        this.min = min;
+        this.max = max;
+        this.categoria = categoria;
+
+        System.out.println("Produto cadastrado com sucesso: " + this.nome);
+    }
 }
+
+
