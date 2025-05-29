@@ -29,7 +29,6 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
         JBCategorias = new javax.swing.JButton();
         JBMovimentação = new javax.swing.JButton();
         JBRelatorios = new javax.swing.JButton();
-        JBReajuste = new javax.swing.JButton();
         JBSair = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -57,8 +56,6 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
 
         JBRelatorios.setText("Relatórios");
 
-        JBReajuste.setText("Reajuste de Preços");
-
         JBSair.setText("Sair");
 
         jLabel2.setText("Versão 1.0    |    2025  ");
@@ -77,12 +74,9 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(JBMovimentação, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                            .addComponent(JBProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JBReajuste, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addComponent(JBProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JBRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JBSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(JBRelatorios)))
                 .addGap(60, 60, 60))
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
@@ -92,7 +86,10 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(JBSair, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,9 +108,7 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
                     .addComponent(JBMovimentação)
                     .addComponent(JBRelatorios))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBReajuste)
-                    .addComponent(JBSair))
+                .addComponent(JBSair)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -171,7 +166,6 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton JBCategorias;
     private javax.swing.JButton JBMovimentação;
     private javax.swing.JButton JBProdutos;
-    private javax.swing.JButton JBReajuste;
     private javax.swing.JButton JBRelatorios;
     private javax.swing.JButton JBSair;
     private javax.swing.JLabel jLabel1;

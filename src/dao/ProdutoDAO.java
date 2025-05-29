@@ -10,13 +10,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane; 
-import modelo.produto;
+import modelo.Produto;
 import visao.FrmListadeProdutos;
 import visao.FrmTelaPrincipal;
         
 
 public class ProdutoDAO {
-    produto produto = new produto();
+    Produto produto = new Produto();
     
     public void CadastrarProduto(){
         Connection conn = null;
