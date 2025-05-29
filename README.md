@@ -22,7 +22,7 @@ O sistema de Controle de Estoque permite gerenciar produtos de uma empresa comer
 |--------------------|-----------------|---------------------------------------------|
 | Java               | 23              | Linguagem principal para o sistema          |
 | MySQL              | 9.3.0           | Banco de dados para persistência de dados   |
-| JDBC Driver        | -               | Conexão Java <-> MySQL                      |
+| JDBC Driver        | 4.2             | Conexão Java <-> MySQL                      |
 | Apache NetBeans    | 25.0            | IDE utilizada para o desenvolvimento        |
 | Git                | 2.40+           | Controle de versão e colaboração            |
 | GitHub             | -               | Hospedagem do repositório e controle remoto |
