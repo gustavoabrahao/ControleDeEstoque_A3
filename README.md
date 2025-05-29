@@ -31,6 +31,30 @@ O sistema de Controle de Estoque permite gerenciar produtos de uma empresa comer
 - `relatorios/` – Modelos de relatórios
 - `docs/` – Documentação e materiais auxiliares
 
+## ✅ Requisitos Funcionais
+
+- Cadastrar produtos com nome, preço unitário, unidade, quantidade mínima/máxima e categoria
+- Cadastrar categorias com nome, tamanho e tipo de embalagem
+- Realizar movimentações de estoque (entrada e saída de produtos)
+- Avisar quando a quantidade de um produto está abaixo da mínima ou acima da máxima
+- Reajustar o preço de todos os produtos por um percentual
+- Gerar relatórios:
+- Lista de Preços
+- Balanço Físico/Financeiro
+- Produtos abaixo da quantidade mínima
+- Produtos acima da quantidade máxima
+- Quantidade de produtos por categoria
+- Interface gráfica para interação com o sistema
+
+## ❌ Requisitos Não Funcionais
+
+- Utilizar o padrão DAO para comunicação com o banco de dados
+- Garantir a persistência dos dados em um banco MySQL
+- Seguir convenções de boas práticas de codificação e organização de pacotes
+- Utilizar controle de versão com Git/GitHub de forma colaborativa
+- Código limpo, organizado e documentado
+- Sistema simples, funcional e de fácil uso
+
 ## 🎯 Funcionalidades Principais
 
 - Cadastro e gerenciamento de produtos e categorias
@@ -55,7 +79,7 @@ Este projeto visa:
 | Gustavo                 | X              | @gustavoabrahao |
 | Carlos                  | X              | @CarlosEduWeiss |
 | Bernardo                | X              | @bnsant         |
-| Roger                   | X              | @rogerpk                |
+| Roger                   | X              | @rogerpk        |
 | Gabriel González Mattos | X              | @gabinhogmtts   |
 
 ## 📌 Requisitos para Rodar o Projeto
