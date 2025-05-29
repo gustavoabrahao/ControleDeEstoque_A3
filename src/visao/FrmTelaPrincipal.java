@@ -56,6 +56,7 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
 
         JBRelatorios.setText("Relatórios");
 
+        JBSair.setBackground(new java.awt.Color(220, 53, 69));
         JBSair.setText("Sair");
 
         jLabel2.setText("Versão 1.0    |    2025  ");
