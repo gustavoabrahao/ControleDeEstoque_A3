@@ -3,11 +3,16 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.lang.RuntimeException;
+import db.DbException;
 
 public class Conexao {
+    private static Connection connection = null;
+    
 
     public static Connection conectar() {
-        Connection connection = null;
+       
+
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
             Class.forName(driver);
@@ -37,5 +42,18 @@ public class Conexao {
             e.printStackTrace();
             return null;
         }
+        
     }
+    public static void desconectar(){
+        
+            if (connection != null){
+               try{
+                   connection.close();
+               } 
+               catch(SQLException e){
+                   throw new DbException(e.getMessage());
+               }
+            }
+        }
+    
 }

@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package dao;
+import java.lang.RuntimeException;
+import java.text.ParseException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -11,22 +13,81 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane; 
+import modelo.produto;
+import visao.FrmListadeProdutos;
+import visao.FrmTelaPrincipal;
+        
 /**
  *
  * @author chicl
  */
 public class ProdutoDAO {
+    produto produto = new produto();
     
-    public void criarProduto(){
+    public void CadastrarProduto(){
+        Connection conn = null;
+        PreparedStatement st = null;
+        
+        try{
+            conn = Conexao.conectar();
+            
+            
+        st = conn.prepareStatement("INSERT INTO produto "
+                + "(nome, unidade, preco, min, max, categoria) "
+                + "VALUES "
+                + "(?,?,?,?,?,?) ");
+        
+        st.setString(1,produto.getNome());
+        st.setInt(2, produto.getUnidade());
+        st.setDouble(3, produto.getPreco());
+        st.setInt(4, produto.getMin());
+        st.setInt(5, produto.getMax());
+        st.setString(6, produto.getCategoria());
+        
+        st.executeUpdate();
+  
+        System.out.println("Produto cadastrado com sucesso!");
+                
+        
+        }catch (SQLException e){
+            e.printStackTrace();    
+        }finally{
+            try{
+                if (st != null) st.close();
+                Conexao.desconectar();
+                
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+            
+        }
+        
+        
      
     }
-    public void LerProduto(){
+    
+    public void ProcurarProdutoID(){
         
     }
+    public void ProcurarProdutoNome(){
+        
+    }
+    
     public void AtualizarProduto(){
+        Connection conn = null;
+        PreparedStatement st = null;
+//        try{
+//            conn = Conexao.conectar();
+//            
+//            st = conn.prepareStatement(
+//                    "UPDATE produto ")
+//
+                    
+        
         
     }
-    public void DeletarProduto(){
+    
+    public void DeletarProdutoID(){
         
     }
 }
