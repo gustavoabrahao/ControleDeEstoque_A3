@@ -38,9 +38,9 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        JBRegistrar = new javax.swing.JButton();
+        JBLimpar = new javax.swing.JButton();
+        JBSair = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -66,12 +66,17 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
 
         jRadioButton2.setText("Saída");
 
-        jButton1.setText("Registrar");
+        JBRegistrar.setText("Registrar");
 
-        jButton2.setText("Limpar");
+        JBLimpar.setText("Limpar");
 
-        jButton3.setBackground(new java.awt.Color(220, 53, 69));
-        jButton3.setText("Sair");
+        JBSair.setBackground(new java.awt.Color(220, 53, 69));
+        JBSair.setText("Sair");
+        JBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBSairActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,11 +131,11 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
                                 .addGap(194, 194, 194))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton1)
+                                .addComponent(JBRegistrar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2)
+                                .addComponent(JBLimpar)
                                 .addGap(18, 18, 18)))
-                        .addComponent(jButton3))
+                        .addComponent(JBSair))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel6)
@@ -164,9 +169,9 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(JBRegistrar)
+                    .addComponent(JBLimpar)
+                    .addComponent(JBSair))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
@@ -179,6 +184,12 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JBSairActionPerformed
+
+
+    
     /**
      * @param args the command line arguments
      */
@@ -215,9 +226,9 @@ public class FrmMovimentacaoDeEstoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton JBLimpar;
+    private javax.swing.JButton JBRegistrar;
+    private javax.swing.JButton JBSair;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

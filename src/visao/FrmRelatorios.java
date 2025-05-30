@@ -28,35 +28,35 @@ public class FrmRelatorios extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
-        jToggleButton5 = new javax.swing.JToggleButton();
+        JBListadeprecos = new javax.swing.JToggleButton();
+        JBBalanco = new javax.swing.JToggleButton();
+        JBProdutos = new javax.swing.JToggleButton();
+        JBQuantidade = new javax.swing.JToggleButton();
+        JBFechar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Relatórios");
 
-        jToggleButton1.setText("Lista de Preços");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        JBListadeprecos.setText("Lista de Preços");
+        JBListadeprecos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                JBListadeprecosActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Balanço Físico/Financeiro");
+        JBBalanco.setText("Balanço Físico/Financeiro");
 
-        jToggleButton3.setText("Produtos Abaixo do Mínimo/Máximo");
+        JBProdutos.setText("Produtos Abaixo do Mínimo/Máximo");
 
-        jToggleButton4.setText("Quantidade de Produtos por Categoria");
+        JBQuantidade.setText("Quantidade de Produtos por Categoria");
 
-        jToggleButton5.setBackground(new java.awt.Color(220, 53, 69));
-        jToggleButton5.setText("Fechar");
-        jToggleButton5.addActionListener(new java.awt.event.ActionListener() {
+        JBFechar.setBackground(new java.awt.Color(220, 53, 69));
+        JBFechar.setText("Fechar");
+        JBFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton5ActionPerformed(evt);
+                JBFecharActionPerformed(evt);
             }
         });
 
@@ -68,19 +68,19 @@ public class FrmRelatorios extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jToggleButton4)
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBQuantidade)
+                        .addComponent(JBProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JBBalanco, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(235, 235, 235)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(155, 155, 155)
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(JBListadeprecos, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
-                        .addComponent(jToggleButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,29 +91,30 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jToggleButton1)
+                .addComponent(JBListadeprecos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton2)
+                .addComponent(JBBalanco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton3)
+                .addComponent(JBProdutos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToggleButton4)
+                .addComponent(JBQuantidade)
                 .addGap(68, 68, 68)
-                .addComponent(jToggleButton5)
+                .addComponent(JBFechar)
                 .addContainerGap(105, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void JBListadeprecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBListadeprecosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_JBListadeprecosActionPerformed
 
-    private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton5ActionPerformed
+    private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
+    System.exit(0);
+    }//GEN-LAST:event_JBFecharActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -150,12 +151,12 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton JBBalanco;
+    private javax.swing.JToggleButton JBFechar;
+    private javax.swing.JToggleButton JBListadeprecos;
+    private javax.swing.JToggleButton JBProdutos;
+    private javax.swing.JToggleButton JBQuantidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JToggleButton jToggleButton5;
     // End of variables declaration//GEN-END:variables
 }

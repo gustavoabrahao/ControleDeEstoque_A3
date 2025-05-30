@@ -29,10 +29,10 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        JBAdicionar = new javax.swing.JToggleButton();
+        JBEditar = new javax.swing.JToggleButton();
+        JBExcluir = new javax.swing.JToggleButton();
+        JBFechar = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,19 +54,25 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jToggleButton1.setText("Adicionar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        JBAdicionar.setText("Adicionar");
+        JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                JBAdicionarActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Editar");
+        JBEditar.setText("Editar");
 
-        jToggleButton3.setBackground(new java.awt.Color(220, 53, 69));
-        jToggleButton3.setText("Excluir");
+        JBExcluir.setBackground(new java.awt.Color(220, 53, 69));
+        JBExcluir.setText("Excluir");
 
-        jToggleButton4.setText("Fechar");
+        JBFechar.setBackground(new java.awt.Color(220, 53, 69));
+        JBFechar.setText("Fechar");
+        JBFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBFecharActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,13 +88,13 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(jToggleButton1)
+                        .addComponent(JBAdicionar)
                         .addGap(54, 54, 54)
-                        .addComponent(jToggleButton2)
+                        .addComponent(JBEditar)
                         .addGap(55, 55, 55)
-                        .addComponent(jToggleButton3)
+                        .addComponent(JBExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton4)
+                        .addComponent(JBFechar)
                         .addGap(11, 11, 11))))
         );
         layout.setVerticalGroup(
@@ -102,19 +108,22 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton4)
-                    .addComponent(jToggleButton3)
-                    .addComponent(jToggleButton2)
-                    .addComponent(jToggleButton1))
+                    .addComponent(JBFechar)
+                    .addComponent(JBExcluir)
+                    .addComponent(JBEditar)
+                    .addComponent(JBAdicionar))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
+    }//GEN-LAST:event_JBAdicionarActionPerformed
+
+    private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JBFecharActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,13 +161,13 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton JBAdicionar;
+    private javax.swing.JToggleButton JBEditar;
+    private javax.swing.JToggleButton JBExcluir;
+    private javax.swing.JToggleButton JBFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     // End of variables declaration//GEN-END:variables
 }

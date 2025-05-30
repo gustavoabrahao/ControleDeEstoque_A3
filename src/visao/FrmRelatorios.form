@@ -27,9 +27,9 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jToggleButton4" min="-2" max="-2" attributes="0"/>
-                      <Component id="jToggleButton3" min="-2" pref="234" max="-2" attributes="0"/>
-                      <Component id="jToggleButton2" min="-2" pref="234" max="-2" attributes="0"/>
+                      <Component id="JBQuantidade" min="-2" max="-2" attributes="0"/>
+                      <Component id="JBProdutos" min="-2" pref="234" max="-2" attributes="0"/>
+                      <Component id="JBBalanco" min="-2" pref="234" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
@@ -37,13 +37,13 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
-                              <Component id="jToggleButton1" min="-2" pref="234" max="-2" attributes="0"/>
+                              <Component id="JBListadeprecos" min="-2" pref="234" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
-                      <Component id="jToggleButton5" min="-2" pref="91" max="-2" attributes="0"/>
+                      <Component id="JBFechar" min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="167" max="32767" attributes="0"/>
@@ -58,15 +58,15 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="14" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="jToggleButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="JBListadeprecos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jToggleButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="JBBalanco" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jToggleButton3" min="-2" max="-2" attributes="0"/>
+              <Component id="JBProdutos" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jToggleButton4" min="-2" max="-2" attributes="0"/>
+              <Component id="JBQuantidade" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-              <Component id="jToggleButton5" min="-2" max="-2" attributes="0"/>
+              <Component id="JBFechar" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -83,30 +83,30 @@
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+    <Component class="javax.swing.JToggleButton" name="JBListadeprecos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lista de Pre&#xe7;os"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBListadeprecosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+    <Component class="javax.swing.JToggleButton" name="JBBalanco">
       <Properties>
         <Property name="text" type="java.lang.String" value="Balan&#xe7;o F&#xed;sico/Financeiro"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton3">
+    <Component class="javax.swing.JToggleButton" name="JBProdutos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Produtos Abaixo do M&#xed;nimo/M&#xe1;ximo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton4">
+    <Component class="javax.swing.JToggleButton" name="JBQuantidade">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quantidade de Produtos por Categoria"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButton5">
+    <Component class="javax.swing.JToggleButton" name="JBFechar">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="45" green="35" red="dc" type="rgb"/>
@@ -114,7 +114,7 @@
         <Property name="text" type="java.lang.String" value="Fechar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton5ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBFecharActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
