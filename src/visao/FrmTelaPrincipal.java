@@ -46,6 +46,11 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
         });
 
         JBCategorias.setText("Categorias");
+        JBCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCategoriasActionPerformed(evt);
+            }
+        });
 
         JBMovimentação.setText("Movimentação de Estoque");
         JBMovimentação.addActionListener(new java.awt.event.ActionListener() {
@@ -55,9 +60,19 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
         });
 
         JBRelatorios.setText("Relatórios");
+        JBRelatorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBRelatoriosActionPerformed(evt);
+            }
+        });
 
         JBSair.setBackground(new java.awt.Color(220, 53, 69));
         JBSair.setText("Sair");
+        JBSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBSairActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Versão 1.0    |    2025  ");
 
@@ -121,12 +136,28 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBProdutosActionPerformed
-        // TODO add your handling code here:
+      FrmListadeProdutos telaProdutos = new FrmListadeProdutos();
+    telaProdutos.setVisible(true);
     }//GEN-LAST:event_JBProdutosActionPerformed
 
     private void JBMovimentaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMovimentaçãoActionPerformed
-        // TODO add your handling code here:
+        FrmMovimentacaoDeEstoque telaMovimentacao = new FrmMovimentacaoDeEstoque();
+                telaMovimentacao.setVisible(true);
     }//GEN-LAST:event_JBMovimentaçãoActionPerformed
+
+    private void JBCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCategoriasActionPerformed
+        FrmListadeCategorias telaCategorias = new FrmListadeCategorias();
+        telaCategorias.setVisible(true);
+    }//GEN-LAST:event_JBCategoriasActionPerformed
+
+    private void JBRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRelatoriosActionPerformed
+        FrmRelatorios telaRelatorios = new FrmRelatorios();
+     telaRelatorios.setVisible(true);
+    }//GEN-LAST:event_JBRelatoriosActionPerformed
+
+    private void JBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_JBSairActionPerformed
 
     /**
      * @param args the command line arguments
