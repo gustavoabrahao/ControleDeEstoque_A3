@@ -102,4 +102,30 @@ public class Produto{
 
         System.out.println("Produto cadastrado com sucesso: " + this.nome);
     }
+    public void RegistrarEntrada(int quantidade){
+        if(quantidade>0){
+            this.unidade += quantidade;
+            System.out.println("Entrada registrada: +"+quantidade +"unidades para o produto "+this.nome);
+            System.out.println(VerificacaoDeQuantidade());
+            
+        }else{
+            System.out.println("Erro: A quantidade de entrada deve ser maior que zero");
+        }
+    }
+    public void RegistrarSaida(int quantidade){
+        if (quantidade > 0){
+            if(this.unidade >= quantidade){
+                this.unidade -= quantidade;
+                System.out.println("Saída Registrada: -"+quantidade+" unidades do produto "+this.nome);
+                System.out.println(VerificacaoDeQuantidade());
+                
+            }else{
+                System.out.println("Erro: Estoque insuficente para o produto"+this.nome);
+            }
+        }else{
+            System.out.println("Erro: Aa quantidade de saída deve ser maior que zero.");
+        }
+        
+    }
 }
+
