@@ -34,6 +34,7 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
         JBExcluir = new javax.swing.JToggleButton();
         JBFechar = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
+        JBVoltarLC = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Categoria");
@@ -74,6 +75,13 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
             }
         });
 
+        JBVoltarLC.setText("Voltar");
+        JBVoltarLC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBVoltarLCActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,18 +92,18 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addComponent(JBAdicionar)
-                        .addGap(54, 54, 54)
+                        .addGap(28, 28, 28)
                         .addComponent(JBEditar)
-                        .addGap(55, 55, 55)
+                        .addGap(34, 34, 34)
                         .addComponent(JBExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
                         .addComponent(JBFechar)
-                        .addGap(11, 11, 11))))
+                        .addGap(26, 26, 26)
+                        .addComponent(JBVoltarLC))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,7 +119,8 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
                     .addComponent(JBFechar)
                     .addComponent(JBExcluir)
                     .addComponent(JBEditar)
-                    .addComponent(JBAdicionar))
+                    .addComponent(JBAdicionar)
+                    .addComponent(JBVoltarLC))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
@@ -124,6 +133,10 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
         System.exit(0);
     }//GEN-LAST:event_JBFecharActionPerformed
+
+    private void JBVoltarLCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBVoltarLCActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +178,7 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
     private javax.swing.JToggleButton JBEditar;
     private javax.swing.JToggleButton JBExcluir;
     private javax.swing.JToggleButton JBFechar;
+    private javax.swing.JButton JBVoltarLC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;

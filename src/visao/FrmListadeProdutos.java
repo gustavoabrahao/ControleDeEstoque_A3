@@ -36,6 +36,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
         JBExcluir = new javax.swing.JButton();
         JBAtualizar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        JBVoltarLP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,45 +94,49 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
 
         JBAtualizar.setText("Atualizar");
 
+        JBVoltarLP.setText("Voltar");
+        JBVoltarLP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBVoltarLPActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(152, Short.MAX_VALUE)
+                .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(185, 185, 185))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(JBNovoProduto)
-                                .addGap(34, 34, 34)
-                                .addComponent(JBEditar)
-                                .addGap(79, 79, 79)
-                                .addComponent(JBExcluir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(JLBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JLCategoria)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addComponent(JBAtualizar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(JBFiltrar)))
-                        .addGap(140, 140, 140))
+                        .addComponent(JLBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(JLCategoria)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(JBFiltrar)
+                        .addGap(185, 185, 185))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(340, 340, 340))))
+                        .addGap(340, 340, 340))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(JBNovoProduto)
+                        .addGap(52, 52, 52)
+                        .addComponent(JBEditar)
+                        .addGap(57, 57, 57)
+                        .addComponent(JBExcluir)
+                        .addGap(47, 47, 47)
+                        .addComponent(JBAtualizar)
+                        .addGap(59, 59, 59)
+                        .addComponent(JBVoltarLP)
+                        .addContainerGap(83, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +158,8 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
                     .addComponent(JBEditar)
                     .addComponent(JBExcluir)
                     .addComponent(JBAtualizar)
-                    .addComponent(JBNovoProduto))
+                    .addComponent(JBNovoProduto)
+                    .addComponent(JBVoltarLP))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -175,6 +181,11 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
     private void JBNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBNovoProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JBNovoProdutoActionPerformed
+
+    private void JBVoltarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLPActionPerformed
+        new FrmTelaPrincipal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_JBVoltarLPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,6 +229,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
     private javax.swing.JButton JBExcluir;
     private javax.swing.JButton JBFiltrar;
     private javax.swing.JButton JBNovoProduto;
+    private javax.swing.JButton JBVoltarLP;
     private javax.swing.JLabel JLBuscar;
     private javax.swing.JLabel JLCategoria;
     private javax.swing.JComboBox<String> jComboBox1;
