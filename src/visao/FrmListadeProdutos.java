@@ -29,7 +29,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         JBFiltrar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        JSPTabeladeProdutos = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         JBNovoProduto = new javax.swing.JButton();
         JBEditar = new javax.swing.JButton();
@@ -39,6 +39,11 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
         JBVoltarLP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Produtos");
@@ -78,7 +83,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
                 "Nome", "Preço", "Unidade", "Quantidade", "Categoria", "Min", "Max"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        JSPTabeladeProdutos.setViewportView(jTable1);
 
         JBNovoProduto.setText("Novo Produto");
         JBNovoProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +115,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
                 .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(JSPTabeladeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(185, 185, 185))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(JLBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,7 +157,7 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBFiltrar))
                 .addGap(41, 41, 41)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(JSPTabeladeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBEditar)
@@ -186,6 +191,10 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
         new FrmTelaPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JBVoltarLPActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -232,9 +241,9 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
     private javax.swing.JButton JBVoltarLP;
     private javax.swing.JLabel JLBuscar;
     private javax.swing.JLabel JLCategoria;
+    private javax.swing.JScrollPane JSPTabeladeProdutos;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
