@@ -60,12 +60,6 @@ O sistema de Controle de Estoque permite gerenciar produtos de uma empresa comer
 - Código limpo, organizado e documentado
 - Sistema simples, funcional e de fácil uso
 
-## 🎯 Funcionalidades Principais
-
-- Cadastro e gerenciamento de produtos e categorias
-- Controle de movimentações (entrada/saída) de estoque
-- Avisos para reposição de estoque (quantidade mínima/máxima)
-- Relatórios detalhados para gestão do estoque
 
 ## 🎓 Objetivos Acadêmicos
 
@@ -79,13 +73,13 @@ Este projeto visa:
 
 ## 👥 Equipe
 
-| Nome do Aluno           | Funcionalidade | Usuário Github  |
-|-------------------------|----------------|-----------------|
-| Gustavo                 | X              | @gustavoabrahao |
-| Carlos                  | X              | @CarlosEduWeiss |
-| Bernardo                | X              | @bnsant         |
-| Roger                   | X              | @rogerpk        |
-| Gabriel González Mattos | X              | @gabinhogmtts   |
+| Nome do Aluno                    | Usuário Github  | RA do Aluno  |
+|----------------------------------|-----------------|--------------|
+| Gustavo Abrahão de Melo Carvalho | @gustavoabrahao |  1072511496  |
+| Carlos                           | @CarlosEduWeiss |  1072519046  |
+| Bernardo Mendonça Santiago       | @bnsant         |  10725116225 |
+| Roger Porton Kuntze              | @rogerpk        |  10725118527 |
+| Gabriel González Mattos          | @gabinhogmtts   |  1072517870  |
 
 ## 📌 Requisitos para Rodar o Projeto
 
