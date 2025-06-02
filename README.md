@@ -87,6 +87,9 @@ Este projeto visa:
 - MySQL
 - IDE Java (Apache NetBeans)
 - Clonar o repositório e configurar o banco de dados a partir do script disponível
+- Login Banco De Dados MySQL:
+  - Usuário: root
+  - Senha: TrabalhoA3
 
 
 ## 🎥 Apresentação
