@@ -184,7 +184,8 @@ public class FrmListadeProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_JBFiltrarActionPerformed
 
     private void JBNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBNovoProdutoActionPerformed
-        // TODO add your handling code here:
+        FRMCadastrodeProdutos cadastro = new FRMCadastrodeProdutos();
+ cadastro.setVisible(true);
     }//GEN-LAST:event_JBNovoProdutoActionPerformed
 
     private void JBVoltarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLPActionPerformed
