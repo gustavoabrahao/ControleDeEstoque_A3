@@ -11,8 +11,8 @@ public class CategoriaDAO {
     
 
     public CategoriaDAO() {
-        
-        connection = Conexao.conectar();
+        Conexao connection = new Conexao();
+        Connection conn = connection.conectar();
         
         if (this.connection == null) {
             throw new RuntimeException("Erro ao conectar com o banco de dados");

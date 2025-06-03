@@ -13,7 +13,6 @@ public class Conexao {
         
         Connection connection = null;
         try{
-            
             String server = "localhost";
             String database = "db_produto";
             String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -25,13 +24,14 @@ public class Conexao {
     
             if (connection != null) {
                 System.out.println("Status: Conectado!");
+                
             }else{
                 System.out.println("Status: Não Conectado!");
+                
             }
             
             return connection;
 
-        
 //        }catch (ClassNotFoundException e) {
 //            System.out.println("Driver JDBC do MySQL não encontrado..");
 //            e.printStackTrace();
@@ -39,7 +39,9 @@ public class Conexao {
             
         }catch(SQLException e){
             System.out.println("Não foi possivel conectar");
+            
             return null;
+            
         }
         
     }
