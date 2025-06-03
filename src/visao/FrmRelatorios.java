@@ -28,7 +28,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        JBListadeprecos = new javax.swing.JToggleButton();
+        JBListaDePrecos = new javax.swing.JToggleButton();
         JBBalanco = new javax.swing.JToggleButton();
         JBProdutos = new javax.swing.JToggleButton();
         JBQuantidade = new javax.swing.JToggleButton();
@@ -39,10 +39,10 @@ public class FrmRelatorios extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Relatórios");
 
-        JBListadeprecos.setText("Lista de Preços");
-        JBListadeprecos.addActionListener(new java.awt.event.ActionListener() {
+        JBListaDePrecos.setText("Lista de Preços");
+        JBListaDePrecos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBListadeprecosActionPerformed(evt);
+                JBListaDePrecosActionPerformed(evt);
             }
         });
 
@@ -77,7 +77,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(155, 155, 155)
-                                .addComponent(JBListadeprecos, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(JBListaDePrecos, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(JBFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -91,7 +91,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(JBListadeprecos)
+                .addComponent(JBListaDePrecos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(JBBalanco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -106,9 +106,9 @@ public class FrmRelatorios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JBListadeprecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBListadeprecosActionPerformed
+    private void JBListaDePrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBListaDePrecosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JBListadeprecosActionPerformed
+    }//GEN-LAST:event_JBListaDePrecosActionPerformed
 
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
     System.exit(0);
@@ -153,7 +153,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton JBBalanco;
     private javax.swing.JToggleButton JBFechar;
-    private javax.swing.JToggleButton JBListadeprecos;
+    private javax.swing.JToggleButton JBListaDePrecos;
     private javax.swing.JToggleButton JBProdutos;
     private javax.swing.JToggleButton JBQuantidade;
     private javax.swing.JLabel jLabel1;

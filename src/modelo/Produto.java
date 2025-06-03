@@ -11,6 +11,7 @@ public class Produto{
     private String categoria;
 
     public Produto() {
+        this(0,"",0,0.0,0,1000,"");
     }
 
     public Produto(int id, String nome, int unidade, double preco, int min, int max, String categoria) {

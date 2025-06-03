@@ -28,7 +28,7 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTListaCategoria = new javax.swing.JTable();
         JBAdicionar = new javax.swing.JToggleButton();
         JBEditar = new javax.swing.JToggleButton();
         JBExcluir = new javax.swing.JToggleButton();
@@ -42,7 +42,7 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Lista de Categoria");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTListaCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -53,7 +53,7 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
                 "ID", "Tamanho", "Embalagem"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(JTListaCategoria);
 
         JBAdicionar.setText("Adicionar");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -183,9 +183,9 @@ public class FrmListadeCategorias extends javax.swing.JFrame {
     private javax.swing.JToggleButton JBExcluir;
     private javax.swing.JToggleButton JBFechar;
     private javax.swing.JButton JBVoltarLC;
+    private javax.swing.JTable JTListaCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
