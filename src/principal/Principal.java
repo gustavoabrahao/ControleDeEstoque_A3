@@ -11,7 +11,8 @@ import dao.Conexao;
 public class Principal {
     public static void main(String[] args) {
 
-       // Conexao.conectar(); esperando o kaduzinho terminar a parte dele
+      Conexao connection = new Conexao();
+      
 
 
         FrmListadeProdutos telaProdutos = new FrmListadeProdutos();
