@@ -8,9 +8,12 @@ import java.util.List;
 public class CategoriaDAO {
 
     private Connection connection;
+    
 
     public CategoriaDAO() {
-        this.connection = Conexao.conectar();
+        
+        connection = Conexao.conectar();
+        
         if (this.connection == null) {
             throw new RuntimeException("Erro ao conectar com o banco de dados");
         }
