@@ -1,10 +1,10 @@
 package principal;
 
-import visao.FrmListadeProdutos;
+import visao.FrmListadeProduto;
 import visao.FrmTelaPrincipal;
 import visao.FrmMovimentacaoDeEstoque;
-import visao.FrmListadeCategorias;
-import visao.FrmRelatorios;
+import visao.FrmListadeCategoria;
+import visao.FrmRelatorio;
 import dao.Conexao;
 
 
@@ -13,21 +13,11 @@ public class Principal {
 
       Conexao connection = new Conexao();
       
-
-
-        FrmListadeProdutos telaProdutos = new FrmListadeProdutos();
-        telaProdutos.setVisible(true);
-
         FrmTelaPrincipal telaPrincipal = new FrmTelaPrincipal();
         telaPrincipal.setVisible(true);
         
-        FrmMovimentacaoDeEstoque telaMovimentacao = new FrmMovimentacaoDeEstoque();
-        telaMovimentacao.setVisible(true);
+       
         
-        FrmListadeCategorias telaCategorias = new FrmListadeCategorias();
-        telaCategorias.setVisible(true);
-        
-        FrmRelatorios telaRelatorios = new FrmRelatorios();
-        telaRelatorios.setVisible(true);
+       
     }
 }
