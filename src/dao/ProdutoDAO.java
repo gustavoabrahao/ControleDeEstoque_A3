@@ -2,9 +2,11 @@ package dao;
 
 import modelo.Produto;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ProdutoDAO {
-
+    ArrayList<Produto>minhaLista = new ArrayList();
+//Função para cadastrar um novo produto.
     public boolean CadastrarProduto(Produto produto) {
         Conexao conexao = new Conexao();
         try (Connection conn = conexao.conectar()) {
@@ -28,7 +30,7 @@ public class ProdutoDAO {
             return false;
         }
     }
-
+//Função para procurar um produto a partir do id
     public Produto ProcurarProdutoID(int id) {
         Conexao conexao = new Conexao();
         Produto produto = new Produto();
@@ -54,7 +56,7 @@ public class ProdutoDAO {
 
         return produto;
     }
-
+//Função para procurar um produto no banco de dados a partir do nome.
     public Produto ProcurarProdutoNome(String nome) {
         Conexao conexao = new Conexao();
         Produto produto = new Produto();
@@ -83,7 +85,7 @@ public class ProdutoDAO {
 
         return produto;
     }
-
+//função para atualizar um produto já existente.
     public boolean AtualizarProduto(Produto produto) {
         String sql = "UPDATE produto SET nome=?, unidade=?, preco=?, min=?, max=?, categoria=? WHERE id=?";
         Conexao conexao = new Conexao();
@@ -109,7 +111,7 @@ public class ProdutoDAO {
             return false;
         }
     }
-
+//função para deletar um produto a partir do id dele.
     public boolean DeletarProdutoID(int id) {
         Conexao conexao = new Conexao();
 
@@ -127,11 +129,55 @@ public class ProdutoDAO {
     }
 
     
-    public boolean RetornarListaProdutos() {
-        return true;
+    public ArrayList<Produto>getMinhaListaProdutos() {
+        
+        minhaLista.clear();
+        Conexao conexao = new Conexao();
+        try(Connection conn = conexao.conectar()){
+            Statement stmt = conn.createStatement();
+            
+            ResultSet res = stmt.executeQuery("SELECT * FROM produto");
+            while(res.next()){
+                
+                int id = res.getInt("id");
+                String nome = res.getString("nome");
+                int unidade = res.getInt("unidade");
+                double preco = res.getDouble("preco");
+                int min = res.getInt("min");
+                int max = res.getInt("max");
+                String categoria = res.getString("Categoria");
+                
+                Produto produto = new Produto(id,nome,unidade,preco,min,max,categoria);
+                minhaLista.add(produto);
+                
+                res.close();
+                stmt.close();
+            }}catch(SQLException ex){
+                    System.out.println("Erro: "+ex);
+                    }
+            return minhaLista;
     }
+ 
 
     public boolean RetornarListaCategoria() {
         return true;
     }
+    public int MaiorID(){
+       Conexao conexao = new Conexao();
+        int MaiorID = 0;
+        
+        try(Connection conn = conexao.conectar()){
+            Statement stmt = conn.createStatement();
+            ResultSet res = stmt.executeQuery("SELECT MAX(id) id from produto");
+            res.next();
+            MaiorID = res.getInt("id");
+            stmt.close();
+                
+        
+    }catch(SQLException ex){
+        System.out.println("Erro: "+ex);
+    }
+        return MaiorID;
+    }
+       
 }

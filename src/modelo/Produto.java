@@ -1,4 +1,6 @@
 package modelo;
+import java.util.ArrayList;
+import dao.ProdutoDAO;
 
 
 public class Produto{
@@ -9,6 +11,7 @@ public class Produto{
     private int min;
     private int max;
     private String categoria;
+    private ProdutoDAO dao;
 
     public Produto() {
         this(0,"",0,0.0,0,1000,"");
@@ -22,6 +25,7 @@ public class Produto{
         this.min = min;
         this.max = max;
         this.categoria = categoria;
+        dao = new ProdutoDAO();
     }
     
 
@@ -128,5 +132,38 @@ public class Produto{
         }
         
     }
+    
+    public boolean RegistrarProduto(String nome, double preco, int min, int max, String categoria){
+        int id = dao.MaiorID()+1;
+        
+        Produto NovoProduto = new Produto(id,nome,0,preco,min,max,categoria);
+        
+        dao.CadastrarProduto(NovoProduto);
+        return true;
+        
+        
+    }
+    public boolean AtualizarProduto(int id, String nome, double preco, int min, int max, String categoria){
+        Produto ProdutoAtualizado = new Produto(id,nome,0,preco,min,max,categoria);
+        dao.AtualizarProduto(ProdutoAtualizado);
+        return true;
+    }
+    public boolean DeletarProduto(int id){
+        return dao.DeletarProdutoID(id);
+        
+    }
+    public Produto ProcurarProdutoId(int id){
+        return dao.ProcurarProdutoID(id);
+        
+    }
+    public Produto ProcurarProdutoNome(String nome){
+        return dao.ProcurarProdutoNome(nome);
+        
+    }
+    public ArrayList<Produto>getMinhaLista(){
+        return dao.getMinhaListaProdutos();
+        
+    }
+            
 }
 
