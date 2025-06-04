@@ -12,12 +12,12 @@ import java.util.List;
 public class CategoriaDAO {
 
     private Connection connection;
-    
+
 
     public CategoriaDAO() {
         Conexao connection = new Conexao();
         Connection conn = connection.conectar();
-        
+
         if (this.connection == null) {
             throw new RuntimeException("Erro ao conectar com o banco de dados");
         }
@@ -26,12 +26,14 @@ public class CategoriaDAO {
     public void salvar(Categoria categoria) throws SQLException {
         String sql = "INSERT INTO categoria (nome) VALUES (?)";
         try (
-                PreparedStatement stmt = connection.prepareStatement(sql)
+                Connection conn = new Conexao().conectar();
+                PreparedStatement stmt = conn.prepareStatement(sql)
         ) {
             stmt.setString(1, categoria.getNomeCategoria());
             stmt.executeUpdate();
         }
     }
+
 
     public List<Categoria> listar() throws SQLException {
         List<Categoria> categorias = new ArrayList<>();
