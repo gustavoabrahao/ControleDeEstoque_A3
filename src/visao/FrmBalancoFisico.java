@@ -106,7 +106,7 @@ public class FrmBalancoFisico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
-    System.exit(0);
+    dispose();
     }//GEN-LAST:event_JBFecharActionPerformed
 
     /**
