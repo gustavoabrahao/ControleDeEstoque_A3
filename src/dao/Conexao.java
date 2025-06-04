@@ -6,12 +6,21 @@ import java.sql.SQLException;
 
 public class Conexao {
 
-    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    private static final String SERVER = "localhost";
-    private static final String DATABASE = "db_produto";
-    private static final String URL = "jdbc:mysql://" + SERVER + ":3306/" + DATABASE + "?useTimezone=true&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASSWORD = "TrabalhoA3";
+    private final String DRIVER;
+    private final String SERVER;
+    private final String DATABASE;
+    private final String URL;
+    private final String USER;
+    private final String PASSWORD;
+
+    public Conexao() {
+        this.DRIVER = "com.mysql.cj.jdbc.Driver";
+        this.SERVER = "localhost";
+        this.DATABASE = "db_produto";
+        this.URL = "jdbc:mysql://" + SERVER + ":3306/" + DATABASE + "?useTimezone=true&serverTimezone=UTC";
+        this.USER = "root";
+        this.PASSWORD = "TrabalhoA3";
+    }
 
     public Connection conectar() {
         try {
