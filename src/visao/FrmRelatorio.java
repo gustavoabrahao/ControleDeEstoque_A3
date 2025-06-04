@@ -47,10 +47,25 @@ public class FrmRelatorio extends javax.swing.JFrame {
         });
 
         JBBalanco.setText("Balanço Físico/Financeiro");
+        JBBalanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBBalancoActionPerformed(evt);
+            }
+        });
 
         JBProdutos.setText("Produtos Abaixo do Mínimo/Máximo");
+        JBProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBProdutosActionPerformed(evt);
+            }
+        });
 
         JBQuantidade.setText("Quantidade de Produtos por Categoria");
+        JBQuantidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBQuantidadeActionPerformed(evt);
+            }
+        });
 
         JBFechar.setBackground(new java.awt.Color(220, 53, 69));
         JBFechar.setText("Fechar");
@@ -104,15 +119,32 @@ public class FrmRelatorio extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBListaDePrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBListaDePrecosActionPerformed
-        // TODO add your handling code here:
+        FrmListaDePreco objeto = new FrmListaDePreco();
+        objeto.setVisible(true);
     }//GEN-LAST:event_JBListaDePrecosActionPerformed
 
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
-    System.exit(0);
+    dispose();
     }//GEN-LAST:event_JBFecharActionPerformed
+
+    private void JBBalancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBBalancoActionPerformed
+        FrmBalancoFisico objeto = new FrmBalancoFisico();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBBalancoActionPerformed
+
+    private void JBProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBProdutosActionPerformed
+        FrmProdutoAbaixoDoMin objeto = new FrmProdutoAbaixoDoMin();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBProdutosActionPerformed
+
+    private void JBQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidadeActionPerformed
+        FrmQuantidadeDeProduto objeto = new FrmQuantidadeDeProduto();
+        objeto.setVisible(true);
+    }//GEN-LAST:event_JBQuantidadeActionPerformed
 
     
     /**

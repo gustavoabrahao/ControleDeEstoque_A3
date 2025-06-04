@@ -6,7 +6,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -95,16 +95,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Balan&#xe7;o F&#xed;sico/Financeiro"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBBalancoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="JBProdutos">
       <Properties>
         <Property name="text" type="java.lang.String" value="Produtos Abaixo do M&#xed;nimo/M&#xe1;ximo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBProdutosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="JBQuantidade">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quantidade de Produtos por Categoria"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBQuantidadeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="JBFechar">
       <Properties>
