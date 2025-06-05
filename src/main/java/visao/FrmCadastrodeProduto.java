@@ -76,6 +76,12 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
 
         jLabel7.setText("Maximo");
 
+        JTFNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTFNomeActionPerformed(evt);
+            }
+        });
+
         JBSalvar.setText("Salvar");
         JBSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +219,7 @@ if (JTFNome.getText().isEmpty()||
             String categoria = JCBCategoria.getSelectedItem().toString();
             
             
-            Produto novoProduto = new Produto(0, nome, quantidade, preco, min, max, categoria);
+            Produto novoProduto = new Produto(0, nome,unidade,preco,quantidade,min, max, categoria);
             ProdutoDAO dao = new ProdutoDAO();
 
             boolean sucesso = dao.CadastrarProduto(novoProduto);
@@ -251,6 +257,10 @@ if (JTFNome.getText().isEmpty()||
     private void JCBCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCBCategoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JCBCategoriaActionPerformed
+
+    private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTFNomeActionPerformed
 
     /**
      * @param args the command line arguments

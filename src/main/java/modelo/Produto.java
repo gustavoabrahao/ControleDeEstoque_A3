@@ -8,20 +8,22 @@ public class Produto{
     private String nome;
     private int unidade;
     private double preco;
+    private int quantidade;
     private int min;
     private int max;
     private String categoria;
     private ProdutoDAO dao;
 
     public Produto() {
-        this(0,"",0,0.0,0,1000,"");
+        this(0,"",0,0.0,0,0,1000,"");
     }
 
-    public Produto(int id, String nome, int unidade, double preco, int min, int max, String categoria) {
+    public Produto(int id, String nome, int unidade, double preco, int quantidade,int min, int max, String categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
         this.preco = preco;
+        this.quantidade = quantidade;
         this.min = min;
         this.max = max;
         this.categoria = categoria;
@@ -60,6 +62,13 @@ public class Produto{
     public void setPreco(double preco) {
         this.preco = preco;
     }
+    public int getQuantidade(){
+        return quantidade;
+    }
+    
+    public void setQuantidade(int quantidade){
+        this.quantidade = quantidade;  
+    }
 
     public int getMin() {
         return min;
@@ -86,20 +95,21 @@ public class Produto{
     }
     
     public String VerificacaoDeQuantidade(){
-        if (this.getUnidade()<this.getMin()){
+        if (this.getQuantidade()<this.getMin()){
             return "A quantidade do produto: "+getNome()+" /está muito baixa, a quantidade minima é "+getMin()+" unidades";
             
-        }else if(this.getUnidade()>this.getMax()){
+        }else if(this.getQuantidade()>this.getMax()){
             return "A quantidade do produto:"+getNome()+" /é muito alta, a quantidade máxima é "+getMax()+" unidades";
         }else{
-            return "produto registrado com sucesso. A quantidade é "+getUnidade()+" unidades";
+            return "produto registrado com sucesso. A quantidade é "+getQuantidade()+" unidades";
         }
     }
      
-    public void cadastrarProduto(int id, String nome, int unidade, double preco, int min, int max, String categoria) {
+    public void cadastrarProduto(int id, String nome, int unidade,int quantidade, double preco, int min, int max, String categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
+        this.quantidade = quantidade;
         this.preco = preco;
         this.min = min;
         this.max = max;
@@ -109,7 +119,7 @@ public class Produto{
     }
     public void RegistrarEntrada(int quantidade){
         if(quantidade>0){
-            this.unidade += quantidade;
+            this.quantidade += quantidade;
             System.out.println("Entrada registrada: +"+quantidade +"unidades para o produto "+this.nome);
             System.out.println(VerificacaoDeQuantidade());
             
@@ -119,8 +129,8 @@ public class Produto{
     }
     public void RegistrarSaida(int quantidade){
         if (quantidade > 0){
-            if(this.unidade >= quantidade){
-                this.unidade -= quantidade;
+            if(this.quantidade >= quantidade){
+                this.quantidade -= quantidade;
                 System.out.println("Saída Registrada: -"+quantidade+" unidades do produto "+this.nome);
                 System.out.println(VerificacaoDeQuantidade());
                 
@@ -133,18 +143,18 @@ public class Produto{
         
     }
     
-    public boolean RegistrarProduto(String nome, double preco, int min, int max, String categoria){
+    public boolean RegistrarProduto(String nome,int unidade,double preco,int quantidade,int min, int max,String categoria){
         int id = dao.MaiorID()+1;
         
-        Produto NovoProduto = new Produto(id,nome,0,preco,min,max,categoria);
+        Produto NovoProduto = new Produto(id,nome,unidade, preco,quantidade,min,max,categoria);
         
         dao.CadastrarProduto(NovoProduto);
         return true;
         
         
     }
-    public boolean AtualizarProduto(int id, String nome, double preco, int min, int max, String categoria){
-        Produto ProdutoAtualizado = new Produto(id,nome,0,preco,min,max,categoria);
+    public boolean AtualizarProduto(int id, String nome, double preco,int quantidade, int min, int max, String categoria){
+        Produto ProdutoAtualizado = new Produto(id,nome,0,preco,quantidade,min,max,categoria);
         dao.AtualizarProduto(ProdutoAtualizado);
         return true;
     }

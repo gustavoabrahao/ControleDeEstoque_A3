@@ -14,15 +14,16 @@ public class ProdutoDAO {
     public boolean CadastrarProduto(Produto produto) {
         Conexao conexao = new Conexao();
         try (Connection conn = conexao.conectar()) {
-            String sql = "INSERT INTO produto (nome, unidade, preco, min, max, categoria) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO produto (nome, unidade,quantidade, preco, min, max, categoria) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement st = conn.prepareStatement(sql);
 
             st.setString(1, produto.getNome());
             st.setInt(2, produto.getUnidade());
-            st.setDouble(3, produto.getPreco());
-            st.setInt(4, produto.getMin());
-            st.setInt(5, produto.getMax());
-            st.setString(6, produto.getCategoria());
+            st.setInt(3,produto.getQuantidade());
+            st.setDouble(4, produto.getPreco());
+            st.setInt(5, produto.getMin());
+            st.setInt(6, produto.getMax());
+            st.setString(7, produto.getCategoria());
 
             st.execute();
             st.close();
@@ -46,6 +47,7 @@ public class ProdutoDAO {
                 produto.setId(res.getInt("id"));
                 produto.setNome(res.getString("nome"));
                 produto.setUnidade(res.getInt("unidade"));
+                produto.setQuantidade(res.getInt("quantidade"));
                 produto.setPreco(res.getDouble("preco"));
                 produto.setMin(res.getInt("min"));
                 produto.setMax(res.getInt("max"));
@@ -75,6 +77,7 @@ public class ProdutoDAO {
                 produto.setId(res.getInt("id"));
                 produto.setNome(res.getString("nome"));
                 produto.setUnidade(res.getInt("unidade"));
+                produto.setQuantidade(res.getInt("quantidade"));
                 produto.setPreco(res.getDouble("preco"));
                 produto.setMin(res.getInt("min"));
                 produto.setMax(res.getInt("max"));
@@ -146,12 +149,13 @@ public class ProdutoDAO {
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
                 int unidade = res.getInt("unidade");
+                int quantidade = res.getInt("quantidade");
                 double preco = res.getDouble("preco");
                 int min = res.getInt("min");
                 int max = res.getInt("max");
                 String categoria = res.getString("Categoria");
                 
-                Produto produto = new Produto(id,nome,unidade,preco,min,max,categoria);
+                Produto produto = new Produto(id,nome,unidade,preco,quantidade,min,max,categoria);
                 minhaLista.add(produto);
                 
                 res.close();
@@ -163,9 +167,6 @@ public class ProdutoDAO {
     }
  
 
-    public boolean RetornarListaCategoria() {
-        return true;
-    }
     public int MaiorID(){
        Conexao conexao = new Conexao();
         int MaiorID = 0;
