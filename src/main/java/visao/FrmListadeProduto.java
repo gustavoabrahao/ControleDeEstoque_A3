@@ -1,14 +1,20 @@
 
 package visao;
 
+import dao.ProdutoDAO;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import modelo.Produto;
 
-
+        
+        
 public class FrmListadeProduto extends javax.swing.JFrame {
 
     
     public FrmListadeProduto() {
         initComponents();
+        carregarTabelaProdutos();
     }
 
     
@@ -78,7 +84,7 @@ public class FrmListadeProduto extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nome", "Preço", "Unidade", "Quantidade", "Categoria", "Min", "Max"
+                "ID", "Nome", "Unidade", "Preço", "Min", "Max", "Categoria"
             }
         ));
         JSPTabeladeProdutos.setViewportView(JTTabelaProdutos);
@@ -200,8 +206,8 @@ public class FrmListadeProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_JBFiltrarActionPerformed
 
     private void JBNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBNovoProdutoActionPerformed
-        FrmCadastrodeProduto cadastro = new FrmCadastrodeProduto();
- cadastro.setVisible(true);
+        FrmCadastrodeProduto cadastro = new FrmCadastrodeProduto(this);
+        cadastro.setVisible(true);
     }//GEN-LAST:event_JBNovoProdutoActionPerformed
 
     private void JBVoltarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLPActionPerformed
@@ -210,7 +216,7 @@ public class FrmListadeProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_JBVoltarLPActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        carregarTabelaProdutos();
     }//GEN-LAST:event_formWindowOpened
 
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
@@ -249,9 +255,27 @@ public class FrmListadeProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JBAtualizarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public void carregarTabelaProdutos() {
+        ProdutoDAO dao = new ProdutoDAO();
+        ArrayList<Produto> lista = dao.getMinhaListaProdutos();
+
+
+        DefaultTableModel modelo = (DefaultTableModel) JTTabelaProdutos.getModel();
+        modelo.setRowCount(0);
+
+        for (Produto p : lista) {
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getUnidade(),
+                p.getPreco(),
+                p.getMin(),
+                p.getMax(),
+                p.getCategoria()
+            });
+        }
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

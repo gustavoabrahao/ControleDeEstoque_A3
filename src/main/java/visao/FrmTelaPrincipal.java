@@ -136,8 +136,8 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBProdutosActionPerformed
-      FrmListadeProduto telaProdutos = new FrmListadeProduto();
-    telaProdutos.setVisible(true);
+        FrmListadeProduto telaProdutos = new FrmListadeProduto();
+        telaProdutos.setVisible(true);
     }//GEN-LAST:event_JBProdutosActionPerformed
 
     private void JBMovimentaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMovimentaçãoActionPerformed

@@ -1,20 +1,28 @@
 
 package visao;
 
+import dao.ProdutoDAO;
 import javax.swing.JOptionPane;
+import modelo.Produto;
 
 
 public class FrmCadastrodeProduto extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCadastrodeProduto.class.getName());
-
+    
+    private FrmListadeProduto telaLista;
+    
     public FrmCadastrodeProduto() {
     initComponents();
 }
     
+    public FrmCadastrodeProduto(FrmListadeProduto telaLista) {
+    initComponents();
+    this.telaLista = telaLista;
+}
     
     public FrmCadastrodeProduto(String nome, String unidade, double preco, int quantidade, int min, int max, String categoria) {
-        initComponents();
+        initComponents(); 
         
         
         JTFNome.setText(nome);
@@ -172,7 +180,7 @@ if (JTFNome.getText().isEmpty()||
     JCBCategoria.getSelectedItem() == null) {
     
     JOptionPane.showMessageDialog(this,
-          "Por faor, preencha todos os campos antes de salvar.",
+          "Por favor, preencha todos os campos antes de salvar.",
           "Campos obrigatórios",
           JOptionPane.WARNING_MESSAGE);
     return;
@@ -205,26 +213,35 @@ if (JTFNome.getText().isEmpty()||
             String categoria = JCBCategoria.getSelectedItem().toString();
             
             
-        
-      
-        
-        JOptionPane.showMessageDialog(this,
-                "Produto:\n" +
-                "Nome: " + nome + "\n" +
-                "Unidade: " + unidade + "\n" +
-                "Preço: " + preco + "\n" +
-                "Minimo: " + min + "\n" +
-                "Maximo:" + max + "\n" +
-                "Categoria: " + categoria);
-        limparCampos();
-        
+            Produto novoProduto = new Produto(0, nome, quantidade, preco, min, max, categoria);
+            ProdutoDAO dao = new ProdutoDAO();
+
+            boolean sucesso = dao.CadastrarProduto(novoProduto);
+
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this,
+                        "Produto cadastrado com sucesso!");
+
+                // Atualiza a tela de lista, se estiver usando
+                if (telaLista != null) {
+                    telaLista.carregarTabelaProdutos();
+                }
+
+                limparCampos(); // Limpa os campos
+                this.dispose(); // Fecha a tela
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        "Erro ao cadastrar produto.",
+                        "Erro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,
-                   "Erro Preço, Quantidade, Mínimo e Máximo devem conter apenas números válidos.",
-                   "Erro de validação",
-                   JOptionPane.ERROR_MESSAGE);
+                    "Erro: Preço, Quantidade, Mínimo e Máximo devem conter apenas números válidos.",
+                    "Erro de validação",
+                    JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_JBSalvarActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
