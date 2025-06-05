@@ -140,12 +140,12 @@ public class ProdutoDAO {
         
         minhaLista.clear();
         Conexao conexao = new Conexao();
+        
         try(Connection conn = conexao.conectar()){
-            Statement stmt = conn.createStatement();
-            
+            Statement stmt = conn.createStatement();          
             ResultSet res = stmt.executeQuery("SELECT * FROM produto");
+            
             while(res.next()){
-                
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
                 int unidade = res.getInt("unidade");
@@ -153,14 +153,16 @@ public class ProdutoDAO {
                 double preco = res.getDouble("preco");
                 int min = res.getInt("min");
                 int max = res.getInt("max");
-                String categoria = res.getString("Categoria");
+                String categoria = res.getString("categoria");
                 
                 Produto produto = new Produto(id,nome,unidade,preco,quantidade,min,max,categoria);
                 minhaLista.add(produto);
+}
                 
                 res.close();
                 stmt.close();
-            }}catch(SQLException ex){
+
+            }catch(SQLException ex){
                     System.out.println("Erro: "+ex);
                     }
             return minhaLista;

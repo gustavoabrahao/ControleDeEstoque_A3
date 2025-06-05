@@ -35,10 +35,23 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
         
         
     }
+    private Produto produtoEmEdicao;
 
-   
-    
-   
+    public FrmCadastrodeProduto(Produto produto) {
+        initComponents();
+        this.produtoEmEdicao = produto;
+
+        JTFNome.setText(produto.getNome());
+        JTFUnidade.setText(String.valueOf(produto.getUnidade()));
+        JTFPreco.setText(String.valueOf(produto.getPreco()));
+        JTFMin.setText(String.valueOf(produto.getMin()));
+        JTFMax.setText(String.valueOf(produto.getMax()));
+        JCBCategoria.setSelectedItem(produto.getCategoria());
+
+        JBSalvar.setText("Atualizar");
+    }
+
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -193,6 +206,7 @@ if (JTFNome.getText().isEmpty()||
 }       
 
         try {
+            int unidade = Integer.parseInt(JTFUnidade.getText());
             double preco = Double.parseDouble(JTFPreco.getText());
             int quantidade = Integer.parseInt(JTFQuantidade.getText());
             int min = Integer.parseInt(JTFMin.getText());
@@ -215,26 +229,39 @@ if (JTFNome.getText().isEmpty()||
            }
             
             String nome = JTFNome.getText();
-            String unidade = JTFUnidade.getText();
             String categoria = JCBCategoria.getSelectedItem().toString();
             
-            
-            Produto novoProduto = new Produto(0, nome,unidade,preco,quantidade,min, max, categoria);
             ProdutoDAO dao = new ProdutoDAO();
+            boolean sucesso;
 
-            boolean sucesso = dao.CadastrarProduto(novoProduto);
+            if (produtoEmEdicao == null) {
+                
+                Produto novoProduto = new Produto(0, nome, unidade, preco, min, max, categoria);
+                sucesso = dao.CadastrarProduto(novoProduto);
+            } else {
+                
+                produtoEmEdicao.setNome(nome);
+                produtoEmEdicao.setUnidade(unidade);
+                produtoEmEdicao.setPreco(preco);
+                produtoEmEdicao.setMin(min);
+                produtoEmEdicao.setMax(max);
+                produtoEmEdicao.setCategoria(categoria);
+
+                sucesso = dao.AtualizarProduto(produtoEmEdicao);
+            }
+            
 
             if (sucesso) {
                 JOptionPane.showMessageDialog(this,
                         "Produto cadastrado com sucesso!");
 
-                // Atualiza a tela de lista, se estiver usando
+                
                 if (telaLista != null) {
                     telaLista.carregarTabelaProdutos();
                 }
 
-                limparCampos(); // Limpa os campos
-                this.dispose(); // Fecha a tela
+                limparCampos(); 
+                this.dispose(); 
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Erro ao cadastrar produto.",

@@ -221,26 +221,20 @@ public class FrmListadeProduto extends javax.swing.JFrame {
 
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
         int linhaSelecionada = JTTabelaProdutos.getSelectedRow();
-        
-        
-        if (linhaSelecionada == -1){
+
+        if (linhaSelecionada == -1) {
             JOptionPane.showMessageDialog(this, "Selecione um produto para editar.");
             return;
         }
+        int idProduto = Integer.parseInt(JTTabelaProdutos.getValueAt(linhaSelecionada, 0).toString());
         
-         String nome = JTTabelaProdutos.getValueAt(linhaSelecionada, 0).toString();
-    String unidade = JTTabelaProdutos.getValueAt(linhaSelecionada, 1).toString();
-    double preco = Double.parseDouble(JTTabelaProdutos.getValueAt(linhaSelecionada, 2).toString());
-    int quantidade = Integer.parseInt(JTTabelaProdutos.getValueAt(linhaSelecionada, 3).toString());
-    int min = Integer.parseInt(JTTabelaProdutos.getValueAt(linhaSelecionada, 4).toString());
-    int max = Integer.parseInt(JTTabelaProdutos.getValueAt(linhaSelecionada, 5).toString());
-    String categoria = JTTabelaProdutos.getValueAt(linhaSelecionada, 6).toString();
-    
-    FrmCadastrodeProduto editarProduto = new FrmCadastrodeProduto(
-            nome, unidade, preco, quantidade, min, max, categoria
-    );
-    editarProduto.setVisible(true);
+        ProdutoDAO dao = new ProdutoDAO();
+        Produto produto = dao.ProcurarProdutoID(idProduto);
+
+        FrmCadastrodeProduto editarProduto = new FrmCadastrodeProduto(produto);
+        editarProduto.setVisible(true);
         
+        this.dispose();
     }//GEN-LAST:event_JBEditarActionPerformed
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
@@ -248,7 +242,28 @@ public class FrmListadeProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentAdded
 
     private void JBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExcluirActionPerformed
-        // TODO add your handling code here:
+        int linhaSelecionada = JTTabelaProdutos.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            int confirmacao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este produto?", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION);
+
+            if (confirmacao == JOptionPane.YES_OPTION) {
+                int idProduto = (int) JTTabelaProdutos.getValueAt(linhaSelecionada, 0);
+
+                ProdutoDAO dao = new ProdutoDAO();
+                boolean sucesso = dao.DeletarProdutoID(idProduto);
+
+                if (sucesso) {
+                    JOptionPane.showMessageDialog(null, "Produto excluído com sucesso!");
+                    carregarTabelaProdutos();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Erro ao excluir o produto.");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+        }
+
     }//GEN-LAST:event_JBExcluirActionPerformed
 
     private void JBAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAtualizarActionPerformed
