@@ -282,11 +282,12 @@ public class FrmListadeProduto extends javax.swing.JFrame {
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getNome(),
+                p.getQuantidade(),
                 p.getUnidade(),
                 p.getPreco(),
+                p.getCategoria(),
                 p.getMin(),
                 p.getMax(),
-                p.getCategoria()
             });
         }
     }

@@ -186,5 +186,22 @@ public class ProdutoDAO {
     }
         return MaiorID;
     }
-       
+       public ArrayList<String> buscarCategorias() {
+        ArrayList<String> lista = new ArrayList<>();
+        Conexao conexao = new Conexao();
+
+        String sql = "SELECT DISTINCT categoria FROM produto ORDER BY categoria";
+
+        try (Connection conn = conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(rs.getString("categoria"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar categorias: " + e.getMessage());
+        }
+
+        return lista;
+    }
 }

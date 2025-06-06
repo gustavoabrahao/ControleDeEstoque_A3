@@ -13,16 +13,22 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
     private FrmListadeProduto telaLista;
     
     public FrmCadastrodeProduto() {
-    initComponents();
-}
+        initComponents();
+        JCBCategoria.setEditable(true);
+        carregarCategoriasDoBanco();
+    }
     
     public FrmCadastrodeProduto(FrmListadeProduto telaLista) {
     initComponents();
     this.telaLista = telaLista;
+    JCBCategoria.setEditable(true);
+    carregarCategoriasDoBanco();
 }
     
     public FrmCadastrodeProduto(String nome, String unidade, double preco, int quantidade, int min, int max, String categoria) {
         initComponents(); 
+        JCBCategoria.setEditable(true);
+        carregarCategoriasDoBanco();
         
         
         JTFNome.setText(nome);
@@ -39,8 +45,10 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
 
     public FrmCadastrodeProduto(Produto produto) {
         initComponents();
+        JCBCategoria.setEditable(true);
+        carregarCategoriasDoBanco();
         this.produtoEmEdicao = produto;
-
+        
         JTFNome.setText(produto.getNome());
         JTFUnidade.setText(String.valueOf(produto.getUnidade()));
         JTFPreco.setText(String.valueOf(produto.getPreco()));
@@ -325,6 +333,16 @@ if (JTFNome.getText().isEmpty()||
         JTFMin.setText("");
         JTFMax.setText("");
         JCBCategoria.setSelectedIndex(-1);
+    }
+    
+    private void carregarCategoriasDoBanco() {
+        ProdutoDAO dao = new ProdutoDAO();
+        java.util.List<String> categorias = dao.buscarCategorias();
+
+        JCBCategoria.removeAllItems();
+        for (String categoria : categorias) {
+            JCBCategoria.addItem(categoria);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
