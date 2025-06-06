@@ -207,7 +207,6 @@ if (JTFNome.getText().isEmpty()||
 }       
 
         try {
-            int unidade = Integer.parseInt(JTFUnidade.getText());
             double preco = Double.parseDouble(JTFPreco.getText());
             int quantidade = Integer.parseInt(JTFQuantidade.getText());
             int min = Integer.parseInt(JTFMin.getText());
@@ -230,6 +229,7 @@ if (JTFNome.getText().isEmpty()||
            }
             
             String nome = JTFNome.getText();
+            String unidade = JTFUnidade.getText();   
             String categoria = JCBCategoria.getSelectedItem().toString();
             
             ProdutoDAO dao = new ProdutoDAO();
@@ -240,7 +240,7 @@ if (JTFNome.getText().isEmpty()||
                 Produto novoProduto = new Produto(0, nome, unidade, preco, quantidade, min, max, categoria);
                 sucesso = dao.CadastrarProduto(novoProduto);
             } else {
-                
+               
                 produtoEmEdicao.setNome(nome);
                 produtoEmEdicao.setUnidade(unidade);
                 produtoEmEdicao.setPreco(preco);

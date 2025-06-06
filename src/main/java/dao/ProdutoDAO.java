@@ -14,7 +14,7 @@ public class ProdutoDAO {
     public boolean CadastrarProduto(Produto produto) {
         Conexao conexao = new Conexao();
         try (Connection conn = conexao.conectar()) {
-            String sql = "INSERT INTO produto (nome, unidade,quantidade, preco, min, max, categoria) VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO produto (nome, unidade,quantidade, preco, min, max, categoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = conn.prepareStatement(sql);
 
             st.setString(1, produto.getNome());
