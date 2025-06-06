@@ -44,10 +44,10 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
         JTFNome.setText(produto.getNome());
         JTFUnidade.setText(String.valueOf(produto.getUnidade()));
         JTFPreco.setText(String.valueOf(produto.getPreco()));
+        JTFQuantidade.setText(String.valueOf(produto.getQuantidade()));
         JTFMin.setText(String.valueOf(produto.getMin()));
         JTFMax.setText(String.valueOf(produto.getMax()));
         JCBCategoria.setSelectedItem(produto.getCategoria());
-
         JBSalvar.setText("Atualizar");
     }
 
@@ -194,6 +194,7 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
 if (JTFNome.getText().isEmpty()||
     JTFUnidade.getText().isEmpty()||
     JTFPreco.getText().isEmpty()||
+    JTFQuantidade.getText().isEmpty()||    
     JTFMin.getText().isEmpty()||
     JTFMax.getText().isEmpty()||
     JCBCategoria.getSelectedItem() == null) {
@@ -236,13 +237,14 @@ if (JTFNome.getText().isEmpty()||
 
             if (produtoEmEdicao == null) {
                 
-                Produto novoProduto = new Produto(0, nome, unidade, preco, min, max, categoria);
+                Produto novoProduto = new Produto(0, nome, unidade, preco, quantidade, min, max, categoria);
                 sucesso = dao.CadastrarProduto(novoProduto);
             } else {
                 
                 produtoEmEdicao.setNome(nome);
                 produtoEmEdicao.setUnidade(unidade);
                 produtoEmEdicao.setPreco(preco);
+                produtoEmEdicao.setQuantidade(quantidade);
                 produtoEmEdicao.setMin(min);
                 produtoEmEdicao.setMax(max);
                 produtoEmEdicao.setCategoria(categoria);

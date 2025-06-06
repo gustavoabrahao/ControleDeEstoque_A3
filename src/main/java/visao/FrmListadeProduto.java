@@ -78,13 +78,13 @@ public class FrmListadeProduto extends javax.swing.JFrame {
 
         JTTabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Unidade", "Preço", "Min", "Max", "Categoria"
+                "ID", "Nome", "Unidade", "Quantidade", "Preço", "Min", "Max", "Categoria"
             }
         ));
         JSPTabeladeProdutos.setViewportView(JTTabelaProdutos);
