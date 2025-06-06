@@ -18,7 +18,7 @@ public class ProdutoDAO {
             PreparedStatement st = conn.prepareStatement(sql);
 
             st.setString(1, produto.getNome());
-            st.setInt(2, produto.getUnidade());
+            st.setString(2, produto.getUnidade());
             st.setInt(3,produto.getQuantidade());
             st.setDouble(4, produto.getPreco());
             st.setInt(5, produto.getMin());
@@ -46,7 +46,7 @@ public class ProdutoDAO {
             if (res.next()) {
                 produto.setId(res.getInt("id"));
                 produto.setNome(res.getString("nome"));
-                produto.setUnidade(res.getInt("unidade"));
+                produto.setUnidade(res.getString("unidade"));
                 produto.setQuantidade(res.getInt("quantidade"));
                 produto.setPreco(res.getDouble("preco"));
                 produto.setMin(res.getInt("min"));
@@ -76,7 +76,7 @@ public class ProdutoDAO {
             if (res.next()) {
                 produto.setId(res.getInt("id"));
                 produto.setNome(res.getString("nome"));
-                produto.setUnidade(res.getInt("unidade"));
+                produto.setUnidade(res.getString("unidade"));
                 produto.setQuantidade(res.getInt("quantidade"));
                 produto.setPreco(res.getDouble("preco"));
                 produto.setMin(res.getInt("min"));
@@ -101,7 +101,7 @@ public class ProdutoDAO {
             PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1, produto.getNome());
-            stmt.setInt(2, produto.getUnidade());
+            stmt.setString(2, produto.getUnidade());
             stmt.setDouble(3, produto.getPreco());
             stmt.setInt(4, produto.getMin());
             stmt.setInt(5, produto.getMax());
@@ -148,7 +148,7 @@ public class ProdutoDAO {
             while(res.next()){
                 int id = res.getInt("id");
                 String nome = res.getString("nome");
-                int unidade = res.getInt("unidade");
+                String unidade = res.getString("unidade");
                 int quantidade = res.getInt("quantidade");
                 double preco = res.getDouble("preco");
                 int min = res.getInt("min");

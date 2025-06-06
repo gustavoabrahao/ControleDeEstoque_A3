@@ -6,7 +6,7 @@ import dao.ProdutoDAO;
 public class Produto{
     private int id;
     private String nome;
-    private int unidade;
+    private String unidade;
     private double preco;
     private int quantidade;
     private int min;
@@ -15,10 +15,10 @@ public class Produto{
     private ProdutoDAO dao;
 
     public Produto() {
-        this(0,"",0,0.0,0,0,1000,"");
+        this(0,"","",0.0,0,0,1000,"");
     }
 
-    public Produto(int id, String nome, int unidade, double preco, int quantidade,int min, int max, String categoria) {
+    public Produto(int id, String nome, String unidade, double preco, int quantidade,int min, int max, String categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
@@ -47,11 +47,11 @@ public class Produto{
         this.nome = nome;
     }
 
-    public int getUnidade() {
+    public String getUnidade() {
         return unidade;
     }
 
-    public void setUnidade(int unidade) {
+    public void setUnidade(String unidade) {
         this.unidade = unidade;
     }
 
@@ -105,7 +105,7 @@ public class Produto{
         }
     }
      
-    public void cadastrarProduto(int id, String nome, int unidade,int quantidade, double preco, int min, int max, String categoria) {
+    public void cadastrarProduto(int id, String nome, String unidade,int quantidade, double preco, int min, int max, String categoria) {
         this.id = id;
         this.nome = nome;
         this.unidade = unidade;
@@ -143,7 +143,7 @@ public class Produto{
         
     }
     
-    public boolean RegistrarProduto(String nome,int unidade,double preco,int quantidade,int min, int max,String categoria){
+    public boolean RegistrarProduto(String nome,String unidade,double preco,int quantidade,int min, int max,String categoria){
         int id = dao.MaiorID()+1;
         
         Produto NovoProduto = new Produto(id,nome,unidade, preco,quantidade,min,max,categoria);
@@ -153,8 +153,8 @@ public class Produto{
         
         
     }
-    public boolean AtualizarProduto(int id, String nome, double preco,int quantidade, int min, int max, String categoria){
-        Produto ProdutoAtualizado = new Produto(id,nome,0,preco,quantidade,min,max,categoria);
+    public boolean AtualizarProduto(int id, String nome,String unidade, double preco,int quantidade, int min, int max, String categoria){
+        Produto ProdutoAtualizado = new Produto(id,nome,unidade,preco,quantidade,min,max,categoria);
         dao.AtualizarProduto(ProdutoAtualizado);
         return true;
     }
