@@ -1,8 +1,10 @@
-
 package visao;
 
 import modelo.Categoria;
 import dao.CategoriaDAO;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FrmListadeCategoria extends javax.swing.JFrame {
 
@@ -10,6 +12,30 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
     public FrmListadeCategoria() {
         initComponents();
     }
+    
+    public void carregarTabela() {
+        
+        try {
+      
+        CategoriaDAO dao = new CategoriaDAO();
+        List<Categoria> lista = dao.listarCategorias();
+        
+        DefaultTableModel modelo = (DefaultTableModel) JTListaCategoria.getModel();
+        modelo.setRowCount(0);
+
+        for (Categoria c : lista) {
+            modelo.addRow(new Object[]{
+                c.getId(), 
+                c.getNomeCategoria(),
+                c.getTamanho(),
+                c.getEmbalagem()               
+            });
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Erro ao carregar categorias: " + e.getMessage());
+    }
+    }      
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -33,13 +59,13 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
 
         JTListaCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Tamanho", "Embalagem"
+                "ID", "Nome", "Tamanho", "Embalagem"
             }
         ));
         jScrollPane1.setViewportView(JTListaCategoria);
@@ -121,6 +147,8 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
+        FrmCadastroDeCategoria cadastro = new FrmCadastroDeCategoria(this);
+        cadastro.setVisible(true);
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed

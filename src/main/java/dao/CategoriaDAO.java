@@ -15,8 +15,8 @@ public class CategoriaDAO {
 
 
     public CategoriaDAO() {
-        Conexao connection = new Conexao();
-        Connection conn = connection.conectar();
+        Conexao conexao = new Conexao();
+        this.connection = conexao.conectar();
 
         if (this.connection == null) {
             throw new RuntimeException("Erro ao conectar com o banco de dados");
@@ -24,18 +24,21 @@ public class CategoriaDAO {
     }
 
     public void salvar(Categoria categoria) throws SQLException {
-        String sql = "INSERT INTO categoria (nome) VALUES (?)";
+        String sql = "INSERT INTO categoria (nome, tamanho, embalagem) VALUES (?, ?, ?)";
         try (
                 Connection conn = new Conexao().conectar();
                 PreparedStatement stmt = conn.prepareStatement(sql)
         ) {
             stmt.setString(1, categoria.getNomeCategoria());
+            stmt.setString(2, categoria.getTamanho());
+            stmt.setString(3, categoria.getEmbalagem());
+            
             stmt.executeUpdate();
         }
     }
 
 
-    public List<Categoria> listar() throws SQLException {
+    public List<Categoria> listarCategorias() throws SQLException {
         List<Categoria> categorias = new ArrayList<>();
         String sql = "SELECT * FROM categoria";
 
@@ -45,8 +48,10 @@ public class CategoriaDAO {
         ) {
             while (rs.next()) {
                 Categoria c = new Categoria(
-                        rs.getInt("id"),
-                        rs.getString("nome")
+                        rs.getInt("idcategoria"),
+                        rs.getString("nome"),
+                        rs.getString("tamanho"),
+                        rs.getString("embalagem")
                 );
                 categorias.add(c);
             }
@@ -56,7 +61,7 @@ public class CategoriaDAO {
     }
 
     public void atualizar(Categoria categoria) throws SQLException {
-        String sql = "UPDATE categoria SET nome = ? WHERE id = ?";
+        String sql = "UPDATE categoria SET nome = ? WHERE idcategoria = ?";
 
         try (
                 PreparedStatement stmt = connection.prepareStatement(sql)
@@ -68,7 +73,7 @@ public class CategoriaDAO {
     }
 
     public void excluir(int id) throws SQLException {
-        String sql = "DELETE FROM categoria WHERE id = ?";
+        String sql = "DELETE FROM categoria WHERE idcategoria = ?";
 
         try (
                 PreparedStatement stmt = connection.prepareStatement(sql)
