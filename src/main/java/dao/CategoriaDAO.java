@@ -61,13 +61,15 @@ public class CategoriaDAO {
     }
 
     public void atualizar(Categoria categoria) throws SQLException {
-        String sql = "UPDATE categoria SET nome = ? WHERE idcategoria = ?";
+        String sql = "UPDATE categoria SET nome = ?, tamanho = ?, embalagem = ? WHERE idcategoria = ?";
 
         try (
                 PreparedStatement stmt = connection.prepareStatement(sql)
         ) {
             stmt.setString(1, categoria.getNomeCategoria());
-            stmt.setInt(2, categoria.getId());
+            stmt.setString(2, categoria.getTamanho());
+            stmt.setString(3, categoria.getEmbalagem());
+            stmt.setInt(4, categoria.getId());
             stmt.executeUpdate();
         }
     }

@@ -1,8 +1,12 @@
 
 package visao;
 
+import dao.CategoriaDAO;
 import dao.ProdutoDAO;
+import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.Categoria;
 import modelo.Produto;
 
 
@@ -142,12 +146,12 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
                             .addComponent(JTFPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(JTFUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(JTFQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(JTFUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -175,19 +179,19 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
                     .addComponent(Nome)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel4))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JTFNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JTFPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JTFQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JTFMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JTFUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JTFMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JCBCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JCBCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JTFUnidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBSalvar)
@@ -324,25 +328,29 @@ if (JTFNome.getText().isEmpty()||
         java.awt.EventQueue.invokeLater(() -> new FrmCadastrodeProduto().setVisible(true));
     }
     
-    
+    private void carregarCategoriasDoBanco() {
+        try {
+            CategoriaDAO dao = new CategoriaDAO();
+            List<Categoria> lista = dao.listarCategorias();
+
+            JCBCategoria.removeAllItems();
+
+            for (Categoria c : lista) {
+                JCBCategoria.addItem(c.getNomeCategoria()); 
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar categorias: " + e.getMessage());
+        }
+    }
+  
     private void limparCampos() {
         JTFNome.setText("");
-        JTFUnidade.setText("");
         JTFPreco.setText("");
+        JTFUnidade.setText("");
         JTFQuantidade.setText("");
         JTFMin.setText("");
         JTFMax.setText("");
         JCBCategoria.setSelectedIndex(-1);
-    }
-    
-    private void carregarCategoriasDoBanco() {
-        ProdutoDAO dao = new ProdutoDAO();
-        java.util.List<String> categorias = dao.buscarCategorias();
-
-        JCBCategoria.removeAllItems();
-        for (String categoria : categorias) {
-            JCBCategoria.addItem(categoria);
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -9,15 +9,27 @@ public class FrmCadastroDeCategoria extends javax.swing.JFrame {
 
         private FrmListadeCategoria FrmLista;
 
-        public FrmCadastroDeCategoria(FrmListadeCategoria frmLista) {
+        public FrmCadastroDeCategoria(FrmListadeCategoria frmLista, Categoria categoria) {
             initComponents();
             this.FrmLista = frmLista;
+            
+            JTFNomeCategoria.setText(categoria.getNomeCategoria());
+            JCBTamanho.setSelectedItem(categoria.getTamanho());
+            JCBEmbalagem.setSelectedItem(categoria.getEmbalagem());
+
+            this.idCategoria = categoria.getId();
         }
     
     public FrmCadastroDeCategoria() {
         initComponents();
     }
+    
+    public FrmCadastroDeCategoria(FrmListadeCategoria frmLista) {
+        initComponents();
+        this.FrmLista = frmLista;
+    }
 
+    private int idCategoria = 0;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -158,9 +170,17 @@ public class FrmCadastroDeCategoria extends javax.swing.JFrame {
                 return;
             }
 
-            Categoria novaCategoria = new Categoria(nome, tamanho, embalagem); 
+            Categoria categoria = new Categoria(nome, tamanho, embalagem); 
             CategoriaDAO dao = new CategoriaDAO();
-            dao.salvar(novaCategoria);
+            
+            if (idCategoria == 0) {
+                dao.salvar(categoria); 
+                JOptionPane.showMessageDialog(this, "Categoria salva com sucesso!");
+            } else {
+                categoria.setId(idCategoria); 
+                dao.atualizar(categoria);
+                JOptionPane.showMessageDialog(this, "Categoria atualizada com sucesso!");
+            }
 
             JOptionPane.showMessageDialog(this, "Categoria salva com sucesso!");
 

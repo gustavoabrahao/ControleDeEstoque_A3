@@ -2,6 +2,7 @@ package visao;
 
 import modelo.Categoria;
 import dao.CategoriaDAO;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -11,6 +12,7 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
     
     public FrmListadeCategoria() {
         initComponents();
+        carregarTabela();
     }
     
     public void carregarTabela() {
@@ -44,12 +46,11 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTListaCategoria = new javax.swing.JTable();
-        JBAdicionar = new javax.swing.JToggleButton();
-        JBEditar = new javax.swing.JToggleButton();
-        JBExcluir = new javax.swing.JToggleButton();
-        JBFechar = new javax.swing.JToggleButton();
         jSeparator1 = new javax.swing.JSeparator();
         JBVoltarLC = new javax.swing.JButton();
+        JBAdicionar = new javax.swing.JButton();
+        JBEditar = new javax.swing.JButton();
+        JBExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Categoria");
@@ -70,6 +71,13 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(JTListaCategoria);
 
+        JBVoltarLC.setText("Voltar");
+        JBVoltarLC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBVoltarLCActionPerformed(evt);
+            }
+        });
+
         JBAdicionar.setText("Adicionar");
         JBAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,22 +86,17 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
         });
 
         JBEditar.setText("Editar");
-
-        JBExcluir.setBackground(new java.awt.Color(220, 53, 69));
-        JBExcluir.setText("Excluir");
-
-        JBFechar.setBackground(new java.awt.Color(220, 53, 69));
-        JBFechar.setText("Fechar");
-        JBFechar.addActionListener(new java.awt.event.ActionListener() {
+        JBEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBFecharActionPerformed(evt);
+                JBEditarActionPerformed(evt);
             }
         });
 
-        JBVoltarLC.setText("Voltar");
-        JBVoltarLC.addActionListener(new java.awt.event.ActionListener() {
+        JBExcluir.setBackground(new java.awt.Color(220, 53, 69));
+        JBExcluir.setText("Excluir");
+        JBExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JBVoltarLCActionPerformed(evt);
+                JBExcluirActionPerformed(evt);
             }
         });
 
@@ -106,15 +109,14 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(JBAdicionar)
-                        .addGap(28, 28, 28)
+                        .addGap(42, 42, 42)
                         .addComponent(JBEditar)
-                        .addGap(29, 29, 29)
-                        .addComponent(JBVoltarLC)
-                        .addGap(33, 33, 33)
-                        .addComponent(JBExcluir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(JBFechar)))
+                        .addComponent(JBVoltarLC)
+                        .addGap(42, 42, 42)
+                        .addComponent(JBExcluir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,59 +137,74 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JBEditar)
-                    .addComponent(JBAdicionar)
                     .addComponent(JBVoltarLC)
-                    .addComponent(JBExcluir)
-                    .addComponent(JBFechar))
+                    .addComponent(JBAdicionar)
+                    .addComponent(JBEditar)
+                    .addComponent(JBExcluir))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void JBVoltarLCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBVoltarLCActionPerformed
+
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
         FrmCadastroDeCategoria cadastro = new FrmCadastroDeCategoria(this);
         cadastro.setVisible(true);
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
-    private void JBFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFecharActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_JBFecharActionPerformed
+    private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
+        int linhaSelecionada = JTListaCategoria.getSelectedRow();
 
-    private void JBVoltarLCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JBVoltarLCActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmListadeCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmListadeCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmListadeCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmListadeCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione uma categoria para editar.");
+            return;
         }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        int id = (int) JTListaCategoria.getValueAt(linhaSelecionada, 0);
+        String nome = (String) JTListaCategoria.getValueAt(linhaSelecionada, 1);
+        String tamanho = (String) JTListaCategoria.getValueAt(linhaSelecionada, 2);
+        String embalagem = (String) JTListaCategoria.getValueAt(linhaSelecionada, 3);
+
+        Categoria categoria = new Categoria(id, nome, tamanho, embalagem);
+
+        FrmCadastroDeCategoria telaEdicao = new FrmCadastroDeCategoria(this, categoria);
+        telaEdicao.setVisible(true);
+    }//GEN-LAST:event_JBEditarActionPerformed
+
+    private void JBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBExcluirActionPerformed
+        int linhaSelecionada = JTListaCategoria.getSelectedRow();
+
+        if (linhaSelecionada == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione uma categoria para excluir.");
+            return;
+        }
+
+        int confirmacao = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir essa categoria?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        if (confirmacao != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        int idCategoria = (int) JTListaCategoria.getValueAt(linhaSelecionada, 0); // ID na coluna 0
+
+        try {
+            CategoriaDAO dao = new CategoriaDAO();
+            dao.excluir(idCategoria);
+
+            JOptionPane.showMessageDialog(this, "Categoria excluída com sucesso!");
+            carregarTabela();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Erro ao excluir categoria: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_JBExcluirActionPerformed
+
+  
+    public static void main(String args[]) {
+    
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmListadeCategoria().setVisible(true);
@@ -196,10 +213,9 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton JBAdicionar;
-    private javax.swing.JToggleButton JBEditar;
-    private javax.swing.JToggleButton JBExcluir;
-    private javax.swing.JToggleButton JBFechar;
+    private javax.swing.JButton JBAdicionar;
+    private javax.swing.JButton JBEditar;
+    private javax.swing.JButton JBExcluir;
     private javax.swing.JButton JBVoltarLC;
     private javax.swing.JTable JTListaCategoria;
     private javax.swing.JLabel jLabel1;
