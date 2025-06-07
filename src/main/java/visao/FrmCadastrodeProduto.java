@@ -1,4 +1,3 @@
-
 package visao;
 
 import dao.CategoriaDAO;
@@ -18,20 +17,20 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
     
     public FrmCadastrodeProduto() {
         initComponents();
-        JCBCategoria.setEditable(true);
+        JCBCategoria.setEditable(false);
         carregarCategoriasDoBanco();
     }
     
     public FrmCadastrodeProduto(FrmListadeProduto telaLista) {
     initComponents();
     this.telaLista = telaLista;
-    JCBCategoria.setEditable(true);
+    JCBCategoria.setEditable(false);
     carregarCategoriasDoBanco();
 }
     
     public FrmCadastrodeProduto(String nome, String unidade, double preco, int quantidade, int min, int max, String categoria) {
         initComponents(); 
-        JCBCategoria.setEditable(true);
+        JCBCategoria.setEditable(false);
         carregarCategoriasDoBanco();
         
         
@@ -49,9 +48,9 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
 
     public FrmCadastrodeProduto(Produto produto) {
         initComponents();
-        JCBCategoria.setEditable(true);
-        carregarCategoriasDoBanco();
+        JCBCategoria.setEditable(false);
         this.produtoEmEdicao = produto;
+        carregarCategoriasDoBanco();
         
         JTFNome.setText(produto.getNome());
         JTFUnidade.setText(String.valueOf(produto.getUnidade()));
@@ -60,6 +59,22 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
         JTFMin.setText(String.valueOf(produto.getMin()));
         JTFMax.setText(String.valueOf(produto.getMax()));
         JCBCategoria.setSelectedItem(produto.getCategoria());
+        JBSalvar.setText("Atualizar");
+    }
+    
+    public FrmCadastrodeProduto(FrmListadeProduto telaLista, Produto produto) {
+        initComponents();
+        this.telaLista = telaLista;
+        this.produtoEmEdicao = produto;
+        JCBCategoria.setEditable(false);
+        carregarCategoriasDoBanco();
+
+        JTFNome.setText(produto.getNome());
+        JTFUnidade.setText(String.valueOf(produto.getUnidade()));
+        JTFPreco.setText(String.valueOf(produto.getPreco()));
+        JTFQuantidade.setText(String.valueOf(produto.getQuantidade()));
+        JTFMin.setText(String.valueOf(produto.getMin()));
+        JTFMax.setText(String.valueOf(produto.getMax()));
         JBSalvar.setText("Atualizar");
     }
 
@@ -243,6 +258,7 @@ if (JTFNome.getText().isEmpty()||
             String nome = JTFNome.getText();
             String unidade = JTFUnidade.getText();   
             String categoria = JCBCategoria.getSelectedItem().toString();
+            System.out.println("Categoria selecionada no momento do salvar: " + categoria);
             
             ProdutoDAO dao = new ProdutoDAO();
             boolean sucesso;
@@ -272,9 +288,9 @@ if (JTFNome.getText().isEmpty()||
                 
                 if (telaLista != null) {
                     telaLista.carregarTabelaProdutos();
+                    telaLista.setVisible(true);
                 }
 
-                limparCampos(); 
                 this.dispose(); 
             } else {
                 JOptionPane.showMessageDialog(this,
@@ -288,6 +304,7 @@ if (JTFNome.getText().isEmpty()||
                     "Erro: Preço, Quantidade, Mínimo e Máximo devem conter apenas números válidos.",
                     "Erro de validação",
                     JOptionPane.ERROR_MESSAGE);
+            System.out.println("Categoria selecionada: " + JCBCategoria.getSelectedItem());
         }
     }//GEN-LAST:event_JBSalvarActionPerformed
 
@@ -329,19 +346,33 @@ if (JTFNome.getText().isEmpty()||
     }
     
     private void carregarCategoriasDoBanco() {
-        try {
-            CategoriaDAO dao = new CategoriaDAO();
-            List<Categoria> lista = dao.listarCategorias();
-
-            JCBCategoria.removeAllItems();
-
-            for (Categoria c : lista) {
-                JCBCategoria.addItem(c.getNomeCategoria()); 
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Erro ao carregar categorias: " + e.getMessage());
+    try {
+        CategoriaDAO dao = new CategoriaDAO();
+        List<Categoria> lista = dao.listarCategorias();
+        JCBCategoria.removeAllItems();
+        for (Categoria c : lista) {
+            JCBCategoria.addItem(c.getNomeCategoria());
         }
+
+        if (produtoEmEdicao != null) {
+            String cat = produtoEmEdicao.getCategoria();
+            boolean existe = false;
+            for (int i = 0; i < JCBCategoria.getItemCount(); i++) {
+                if (JCBCategoria.getItemAt(i).equals(cat)) {
+                    existe = true;
+                    break;
+                }
+            }
+            if (!existe && cat != null && !cat.isBlank()) {
+                JCBCategoria.addItem(cat);
+            }
+            JCBCategoria.setSelectedItem(cat);
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Erro ao carregar categorias: " + e.getMessage());
     }
+  }
   
     private void limparCampos() {
         JTFNome.setText("");

@@ -91,7 +91,7 @@ public class Produto{
     }
 
     public void setCategoria(String nomeCategoria) {
-        this.categoria = categoria;
+        this.categoria = nomeCategoria;
     }
     
     public String VerificacaoDeQuantidade(){

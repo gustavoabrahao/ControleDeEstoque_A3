@@ -1,10 +1,13 @@
-
 package visao;
 
+
+import dao.CategoriaDAO;
 import dao.ProdutoDAO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.List;
+import modelo.Categoria;
 import modelo.Produto;
 
         
@@ -15,9 +18,24 @@ public class FrmListadeProduto extends javax.swing.JFrame {
     public FrmListadeProduto() {
         initComponents();
         carregarTabelaProdutos();
+        carregarCategoriasNoFiltro();
     }
 
-    
+    private void carregarCategoriasNoFiltro() {
+        try {
+            CategoriaDAO dao = new CategoriaDAO();
+            List<Categoria> categorias = dao.listarCategorias();
+
+            JCBCategoria.removeAllItems();
+            JCBCategoria.addItem("Todas"); 
+
+            for (Categoria c : categorias) {
+                JCBCategoria.addItem(c.getNomeCategoria());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao carregar categorias: " + e.getMessage());
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -202,12 +220,48 @@ public class FrmListadeProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_JCBCategoriaActionPerformed
 
     private void JBFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBFiltrarActionPerformed
-        // TODO add your handling code here:
+        String nomeBuscado = JTFBuscar.getText().trim(); 
+        String categoriaSelecionada = JCBCategoria.getSelectedItem().toString(); 
+
+        try {
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> produtos;
+
+            if (categoriaSelecionada.equals("Todas") && nomeBuscado.isEmpty()) {
+                produtos = dao.getMinhaListaProdutos();
+            } else if (categoriaSelecionada.equals("Todas")) {
+                produtos = dao.buscarPorNome(nomeBuscado);
+            } else if (nomeBuscado.isEmpty()) {
+                produtos = dao.buscarPorCategoria(categoriaSelecionada);
+            } else {
+                produtos = dao.buscarPorNomeECategoria(nomeBuscado, categoriaSelecionada);
+            }
+
+            DefaultTableModel modelo = (DefaultTableModel) JTTabelaProdutos.getModel();
+            modelo.setRowCount(0);
+
+            for (Produto p : produtos) {
+                modelo.addRow(new Object[]{
+                    p.getId(),
+                    p.getNome(),
+                    p.getQuantidade(),
+                    p.getUnidade(),
+                    p.getPreco(),
+                    p.getCategoria(),
+                    p.getMin(),
+                    p.getMax()
+                });
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao filtrar produtos: " + e.getMessage());
+        }
     }//GEN-LAST:event_JBFiltrarActionPerformed
 
     private void JBNovoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBNovoProdutoActionPerformed
         FrmCadastrodeProduto cadastro = new FrmCadastrodeProduto(this);
         cadastro.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JBNovoProdutoActionPerformed
 
     private void JBVoltarLPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLPActionPerformed
@@ -231,10 +285,10 @@ public class FrmListadeProduto extends javax.swing.JFrame {
         ProdutoDAO dao = new ProdutoDAO();
         Produto produto = dao.ProcurarProdutoID(idProduto);
 
-        FrmCadastrodeProduto editarProduto = new FrmCadastrodeProduto(produto);
+        FrmCadastrodeProduto editarProduto = new FrmCadastrodeProduto(this, produto);
         editarProduto.setVisible(true);
         
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_JBEditarActionPerformed
 
     private void formComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_formComponentAdded
@@ -279,6 +333,7 @@ public class FrmListadeProduto extends javax.swing.JFrame {
         modelo.setRowCount(0);
 
         for (Produto p : lista) {
+            System.out.println("Categoria do produto carregado: " + p.getCategoria());
             modelo.addRow(new Object[]{
                 p.getId(),
                 p.getNome(),

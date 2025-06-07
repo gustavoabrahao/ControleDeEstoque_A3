@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProdutoDAO {
     ArrayList<Produto>minhaLista = new ArrayList();
@@ -93,31 +94,30 @@ public class ProdutoDAO {
         return produto;
     }
 //função para atualizar um produto já existente.
-    public boolean AtualizarProduto(Produto produto) {
-        String sql = "UPDATE produto SET nome=?, unidade=?, preco=?, min=?, max=?, categoria=? WHERE id=?";
-        Conexao conexao = new Conexao();
+ public boolean AtualizarProduto(Produto produto) {
+    String sql = "UPDATE produto SET nome=?, unidade=?, quantidade=?, preco=?, min=?, max=?, categoria=? WHERE id=?";
+    Conexao conexao = new Conexao();
 
-        try (Connection conn = conexao.conectar()) {
-            PreparedStatement stmt = conn.prepareStatement(sql);
+    try (Connection conn = conexao.conectar()) {
+        PreparedStatement stmt = conn.prepareStatement(sql);
+        stmt.setString(1, produto.getNome());
+        stmt.setString(2, produto.getUnidade());
+        stmt.setInt(3, produto.getQuantidade());
+        stmt.setDouble(4, produto.getPreco());
+        stmt.setInt(5, produto.getMin());
+        stmt.setInt(6, produto.getMax());
+        stmt.setString(7, produto.getCategoria());
+        stmt.setInt(8, produto.getId());
+        stmt.executeUpdate();
+        stmt.close();
 
-            stmt.setString(1, produto.getNome());
-            stmt.setString(2, produto.getUnidade());
-            stmt.setDouble(3, produto.getPreco());
-            stmt.setInt(4, produto.getMin());
-            stmt.setInt(5, produto.getMax());
-            stmt.setString(6, produto.getCategoria());
-            stmt.setInt(7, produto.getId());
-
-            stmt.executeUpdate();
-            stmt.close();
-
-            System.out.println("Produto atualizado com sucesso!");
-            return true;
-        } catch (SQLException erro) {
-            System.out.println("Erro: " + erro.getMessage());
-            return false;
-        }
+        System.out.println("Produto atualizado com sucesso!");
+        return true;
+    } catch (SQLException erro) {
+        System.out.println("Erro ao atualizar produto: " + erro.getMessage());
+        return false;
     }
+}   
 //função para deletar um produto a partir do id dele.
     public boolean DeletarProdutoID(int id) {
         Conexao conexao = new Conexao();
@@ -204,4 +204,76 @@ public class ProdutoDAO {
 
         return lista;
     }
+       public List<Produto> buscarPorCategoria(String categoria) throws SQLException { // pra filtrar por categoria
+    List<Produto> lista = new ArrayList<>();
+    String sql = "SELECT * FROM produto WHERE categoria = ?";
+
+    try (
+            Connection conn = new Conexao().conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setString(1, categoria);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+        Produto p = new Produto(
+          rs.getInt("id"),
+          rs.getString("nome"),
+          rs.getString("unidade"),
+          rs.getDouble("preco"),
+          rs.getInt("quantidade"),
+          rs.getInt("min"),
+          rs.getInt("max"),
+          rs.getString("categoria")             
+      );
+            lista.add(p);
+        }
+    }
+    return lista;
+       }
+       public List<Produto> buscarPorNome(String nome) throws SQLException { // esse aqui é pra buscar por nome
+        List<Produto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM produto WHERE nome LIKE ?";
+        try (Connection conn = new Conexao().conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Produto p = new Produto(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("unidade"),
+                        rs.getDouble("preco"),
+                        rs.getInt("quantidade"),
+                        rs.getInt("min"),
+                        rs.getInt("max"),
+                        rs.getString("categoria")
+                );
+                lista.add(p);
+            }
+        }
+        return lista;
+    }
+       public List<Produto> buscarPorNomeECategoria(String nome, String categoria) throws SQLException { // esse é por nome + categoria
+        List<Produto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM produto WHERE nome LIKE ? AND categoria = ?";
+        try (Connection conn = new Conexao().conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%" + nome + "%");
+            stmt.setString(2, categoria);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Produto p = new Produto(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("unidade"),
+                        rs.getDouble("preco"),
+                        rs.getInt("quantidade"),
+                        rs.getInt("min"),
+                        rs.getInt("max"),
+                        rs.getString("categoria")
+                );
+                lista.add(p);
+            }
+        }
+        return lista;
+    }
 }
+
+    
