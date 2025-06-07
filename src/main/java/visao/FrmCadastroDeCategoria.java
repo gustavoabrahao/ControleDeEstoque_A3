@@ -1,35 +1,37 @@
 package visao;
 
 import dao.CategoriaDAO;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 
 
 public class FrmCadastroDeCategoria extends javax.swing.JFrame {
 
-        private FrmListadeCategoria FrmLista;
+    private JFrame janelaAnterior;
+    private int idCategoria = 0;
 
-        public FrmCadastroDeCategoria(FrmListadeCategoria frmLista, Categoria categoria) {
-            initComponents();
-            this.FrmLista = frmLista;
-            
-            JTFNomeCategoria.setText(categoria.getNomeCategoria());
-            JCBTamanho.setSelectedItem(categoria.getTamanho());
-            JCBEmbalagem.setSelectedItem(categoria.getEmbalagem());
 
-            this.idCategoria = categoria.getId();
-        }
-    
     public FrmCadastroDeCategoria() {
         initComponents();
     }
-    
-    public FrmCadastroDeCategoria(FrmListadeCategoria frmLista) {
+
+
+    public FrmCadastroDeCategoria(JFrame janelaAnterior) {
+        this.janelaAnterior = janelaAnterior;
         initComponents();
-        this.FrmLista = frmLista;
     }
 
-    private int idCategoria = 0;
+
+    public FrmCadastroDeCategoria(JFrame janelaAnterior, Categoria categoria) {
+        this.janelaAnterior = janelaAnterior;
+        initComponents();
+        JTFNomeCategoria.setText(categoria.getNomeCategoria());
+        JCBTamanho.setSelectedItem(categoria.getTamanho());
+        JCBEmbalagem.setSelectedItem(categoria.getEmbalagem());
+        this.idCategoria = categoria.getId();
+    }
+   
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -85,8 +87,18 @@ public class FrmCadastroDeCategoria extends javax.swing.JFrame {
         });
 
         JBLimpar.setText("🗑️ Limpar");
+        JBLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBLimparActionPerformed(evt);
+            }
+        });
 
         JBCancelar.setText("✖ Cancelar");
+        JBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,8 +196,9 @@ public class FrmCadastroDeCategoria extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Categoria salva com sucesso!");
 
-            if (FrmLista != null) {
-                FrmLista.carregarTabela(); 
+            if (janelaAnterior instanceof FrmListadeCategoria) {
+                ((FrmListadeCategoria) janelaAnterior).carregarTabela();
+                janelaAnterior.setVisible(true);
             }
 
             this.dispose(); 
@@ -195,6 +208,21 @@ public class FrmCadastroDeCategoria extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_JBSalvarActionPerformed
+
+    private void JBLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBLimparActionPerformed
+        JTFNomeCategoria.setText("");          
+        JCBTamanho.setSelectedIndex(0);        
+        JCBEmbalagem.setSelectedIndex(0);      
+
+        JTFNomeCategoria.requestFocus();       
+    }//GEN-LAST:event_JBLimparActionPerformed
+
+    private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
+        if (janelaAnterior != null) {
+            janelaAnterior.setVisible(true); 
+        }
+        this.dispose(); 
+    }//GEN-LAST:event_JBCancelarActionPerformed
 
   
     public static void main(String args[]) {

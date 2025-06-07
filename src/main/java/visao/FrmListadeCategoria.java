@@ -4,12 +4,18 @@ import modelo.Categoria;
 import dao.CategoriaDAO;
 import java.sql.SQLException;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class FrmListadeCategoria extends javax.swing.JFrame {
 
-    
+    private JFrame janelaAnterior;
+    public FrmListadeCategoria(JFrame janelaAnterior) {
+        this.janelaAnterior = janelaAnterior;
+        initComponents();
+        carregarTabela();
+    }
     public FrmListadeCategoria() {
         initComponents();
         carregarTabela();
@@ -119,12 +125,12 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
                         .addComponent(JBExcluir)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
-                        .addComponent(jLabel1))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(230, 230, 230))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,12 +154,16 @@ public class FrmListadeCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBVoltarLCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBVoltarLCActionPerformed
-        // TODO add your handling code here:
+        if (janelaAnterior != null) {
+            janelaAnterior.setVisible(true);
+        }
+        dispose();
     }//GEN-LAST:event_JBVoltarLCActionPerformed
 
     private void JBAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAdicionarActionPerformed
         FrmCadastroDeCategoria cadastro = new FrmCadastroDeCategoria(this);
         cadastro.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JBAdicionarActionPerformed
 
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed

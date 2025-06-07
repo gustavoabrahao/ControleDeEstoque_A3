@@ -136,8 +136,9 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBProdutosActionPerformed
-        FrmListadeProduto telaProdutos = new FrmListadeProduto();
-        telaProdutos.setVisible(true);
+        FrmListadeProduto telaProduto = new FrmListadeProduto(this); 
+        telaProduto.setVisible(true);
+        this.setVisible(false); 
     }//GEN-LAST:event_JBProdutosActionPerformed
 
     private void JBMovimentaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMovimentaçãoActionPerformed
@@ -146,8 +147,9 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JBMovimentaçãoActionPerformed
 
     private void JBCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCategoriasActionPerformed
-        FrmListadeCategoria telaCategorias = new FrmListadeCategoria();
-        telaCategorias.setVisible(true);
+        FrmListadeCategoria ldc = new FrmListadeCategoria(this);
+        ldc.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JBCategoriasActionPerformed
 
     private void JBRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRelatoriosActionPerformed

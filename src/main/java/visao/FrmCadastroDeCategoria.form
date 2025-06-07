@@ -177,11 +177,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="\ud83d\uddd1&#xfe0f; Limpar" containsInvalidXMLChars="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBLimparActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBCancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x2716; Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBCancelarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
