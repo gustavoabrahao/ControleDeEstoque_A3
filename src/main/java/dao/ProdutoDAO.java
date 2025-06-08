@@ -338,6 +338,17 @@ public class ProdutoDAO {
            
        }
        
+     public void atualizarPreco(int idProduto, double novoPreco) throws SQLException {
+        String sql = "UPDATE produto SET preco = ? WHERE id = ?";
+        try (
+                Connection conn = new Conexao().conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setDouble(1, novoPreco);
+            stmt.setInt(2, idProduto);
+            stmt.executeUpdate();
+        }
+    }
+       
+       
 }
 
     
