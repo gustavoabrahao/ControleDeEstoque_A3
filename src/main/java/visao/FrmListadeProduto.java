@@ -62,6 +62,10 @@ public class FrmListadeProduto extends javax.swing.JFrame {
         JBExcluir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         JBVoltarLP = new javax.swing.JButton();
+        JTEntrada = new javax.swing.JTextField();
+        JTSaida = new javax.swing.JTextField();
+        JBEntrada = new javax.swing.JButton();
+        JBSaida = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -144,13 +148,49 @@ public class FrmListadeProduto extends javax.swing.JFrame {
             }
         });
 
+        JTEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTEntradaActionPerformed(evt);
+            }
+        });
+
+        JTSaida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTSaidaActionPerformed(evt);
+            }
+        });
+
+        JBEntrada.setText("ENTRADA");
+        JBEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBEntradaActionPerformed(evt);
+            }
+        });
+
+        JBSaida.setText("SAIDA");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(328, 328, 328)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(JBNovoProduto)
+                        .addGap(29, 29, 29)
+                        .addComponent(JBEditar)
+                        .addGap(42, 42, 42)
+                        .addComponent(JBExcluir)
+                        .addGap(18, 18, 18)
+                        .addComponent(JBVoltarLP)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 149, Short.MAX_VALUE)
+                .addGap(0, 72, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(JLBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -165,22 +205,13 @@ public class FrmListadeProduto extends javax.swing.JFrame {
                         .addGap(185, 185, 185))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(JSPTabeladeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
-                        .addComponent(JBNovoProduto)
-                        .addGap(29, 29, 29)
-                        .addComponent(JBEditar)
-                        .addGap(42, 42, 42)
-                        .addComponent(JBExcluir)
-                        .addGap(18, 18, 18)
-                        .addComponent(JBVoltarLP))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(328, 328, 328)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(JBEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JTEntrada)
+                            .addComponent(JBSaida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(JTSaida, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(97, 97, 97))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,15 +226,26 @@ public class FrmListadeProduto extends javax.swing.JFrame {
                     .addComponent(JTFBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JCBCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JBFiltrar))
-                .addGap(29, 29, 29)
-                .addComponent(JSPTabeladeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(JSPTabeladeProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(JTEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JBEntrada)
+                        .addGap(18, 18, 18)
+                        .addComponent(JTSaida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JBSaida)))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBEditar)
                     .addComponent(JBExcluir)
                     .addComponent(JBNovoProduto)
                     .addComponent(JBVoltarLP))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -318,6 +360,18 @@ public class FrmListadeProduto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JBExcluirActionPerformed
 
+    private void JTSaidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTSaidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTSaidaActionPerformed
+
+    private void JBEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JBEntradaActionPerformed
+
+    private void JTEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTEntradaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTEntradaActionPerformed
+
     public void carregarTabelaProdutos() {
         ProdutoDAO dao = new ProdutoDAO();
         ArrayList<Produto> lista = dao.getMinhaListaProdutos();
@@ -378,15 +432,19 @@ public class FrmListadeProduto extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBEditar;
+    private javax.swing.JButton JBEntrada;
     private javax.swing.JButton JBExcluir;
     private javax.swing.JButton JBFiltrar;
     private javax.swing.JButton JBNovoProduto;
+    private javax.swing.JButton JBSaida;
     private javax.swing.JButton JBVoltarLP;
     private javax.swing.JComboBox<String> JCBCategoria;
     private javax.swing.JLabel JLBuscar;
     private javax.swing.JLabel JLCategoria;
     private javax.swing.JScrollPane JSPTabeladeProdutos;
+    private javax.swing.JTextField JTEntrada;
     private javax.swing.JTextField JTFBuscar;
+    private javax.swing.JTextField JTSaida;
     private javax.swing.JTable JTTabelaProdutos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;

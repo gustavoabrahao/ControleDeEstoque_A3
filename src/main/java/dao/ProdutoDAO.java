@@ -1,6 +1,7 @@
 package dao;
 
 import modelo.Produto;
+import modelo.RegistroMovimentacao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -274,6 +275,69 @@ public class ProdutoDAO {
         }
         return lista;
     }
+       public boolean RegistrarEntradaProduto(int produtoId, int quantidadeEntrada, String observacao){
+           Conexao conexao = new Conexao();
+           Produto produto = ProcurarProdutoID(produtoId);
+           
+           if(produto.getId() == 0){
+               return false;
+           }
+           
+           try(Connection conn = conexao.conectar()){
+               conn.setAutoCommit(false);
+               
+               String sqlUpdateProduto = "UPDATE produto SET quantidade = quantidade + ? WHERE id = ?";
+               try(PreparedStatement stmtUpdate = conn.prepareStatement(sqlUpdateProduto)){
+                   stmtUpdate.setInt(1, quantidadeEntrada);
+                   stmtUpdate.setInt(2, produtoId);
+                   int linhasAfetadas = stmtUpdate.executeUpdate();
+                   
+                   if(linhasAfetadas == 0){
+                       conn.rollback();
+                       return false;
+                   }
+               }conn.commit();
+               return true;
+               
+                    
+           }catch (SQLException e){
+               System.out.println("erro: "+e);
+           }return false;
+           
+           
+       }
+       public boolean RegistrarSaidaProduto(int produtoId, int quantidadeSaida,String observacao){
+           Conexao conexao = new Conexao();
+           Produto produto = ProcurarProdutoID(produtoId);
+           
+           if(produto.getId() == 0){
+               return false;
+           }
+           if(produto.getQuantidade() < quantidadeSaida)
+           
+           try(Connection conn = conexao.conectar()){
+               conn.setAutoCommit(false);
+               
+               String sqlUpdateProduto = "UPDATE produto SET quantidade = quantidade - ? WHERE id = ?";
+               try(PreparedStatement stmtUpdate = conn.prepareStatement(sqlUpdateProduto)){
+                   stmtUpdate.setInt(1, quantidadeSaida);
+                   stmtUpdate.setInt(2, produtoId);
+                   int linhasAfetadas = stmtUpdate.executeUpdate();
+                   
+                   if(linhasAfetadas == 0){
+                       conn.rollback();
+                       return false;
+                   }
+               }conn.commit();
+               return true;
+               
+                    
+           }catch (SQLException e){
+               System.out.println("erro: "+e);
+           }return false;
+           
+       }
+       
 }
 
     
