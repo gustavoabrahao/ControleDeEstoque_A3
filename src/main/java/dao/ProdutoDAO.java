@@ -347,6 +347,37 @@ public class ProdutoDAO {
             stmt.executeUpdate();
         }
     }
+     public List<Produto> listarProdutoOrdenadoPorNome(){
+         
+         String sql = "SELECT * FROM produto ORDER BY nome ASC";
+         
+         List<Produto> listaDeProdutos = new ArrayList<>();
+         try(Connection conn = new Conexao().conectar();
+                 PreparedStatement stmt = conn.prepareStatement(sql);
+                 ResultSet rs = stmt.executeQuery()){
+             
+             while (rs.next()){
+                 
+                 int id = rs.getInt("id");
+                 String nome = rs.getString("nome");
+                 String unidade = rs.getString("unidade");
+                 double preco = rs.getDouble("preco");
+                 int quantidade = rs.getInt("min");
+                 int min = rs.getInt("min");
+                 int max = rs.getInt("max");
+                 String categoria = rs.getString("categoria");
+                 
+                 Produto produto = new Produto(id, nome, unidade, preco, quantidade, min, max, categoria);
+                 
+                 listaDeProdutos.add(produto);
+             }
+             
+         }catch (SQLException e){
+             System.out.println("Erro ao buscar a lista de produtos ordenada: "+ e.getMessage());
+         }
+         return listaDeProdutos;
+                 
+     }
        
        
 }

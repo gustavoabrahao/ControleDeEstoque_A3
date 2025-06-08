@@ -93,6 +93,18 @@ public class Produto{
     public void setCategoria(String nomeCategoria) {
         this.categoria = nomeCategoria;
     }
+    @Override
+    public String toString(){
+        return "id: "+id+
+                " nome: "+nome+
+                " Unidade: "+unidade+
+                " Preço: "+preco+
+                " Quantidade: "+quantidade+
+                " Min: "+min+
+                " Max: "+max+
+                " Categoria: "+categoria;
+               
+    }
     
     public String VerificacaoDeQuantidade(){
         if (this.getQuantidade()<this.getMin()){
