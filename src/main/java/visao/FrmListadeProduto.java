@@ -105,13 +105,13 @@ public class FrmListadeProduto extends javax.swing.JFrame {
 
         JTTabelaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nome", "Quantidade", "Unidade", "Preço", "Categoria", "Min", "Max"
+                "ID", "Nome", "Quantidade", "Unidade", "Categoria"
             }
         ));
         JSPTabeladeProdutos.setViewportView(JTTabelaProdutos);
@@ -255,10 +255,7 @@ public class FrmListadeProduto extends javax.swing.JFrame {
                     p.getNome(),
                     p.getQuantidade(),
                     p.getUnidade(),
-                    p.getPreco(),
-                    p.getCategoria(),
-                    p.getMin(),
-                    p.getMax()
+                    p.getCategoria()
                 });
             }
 
@@ -290,7 +287,7 @@ public class FrmListadeProduto extends javax.swing.JFrame {
             return;
         }
         int idProduto = Integer.parseInt(JTTabelaProdutos.getValueAt(linhaSelecionada, 0).toString());
-        
+       
         ProdutoDAO dao = new ProdutoDAO();
         Produto produto = dao.ProcurarProdutoID(idProduto);
 
@@ -350,10 +347,7 @@ public class FrmListadeProduto extends javax.swing.JFrame {
                 p.getNome(),
                 p.getQuantidade(),
                 p.getUnidade(),
-                p.getPreco(),
-                p.getCategoria(),
-                p.getMin(),
-                p.getMax(),
+                p.getCategoria()
             });
         }
     }

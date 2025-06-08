@@ -7,6 +7,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Categoria;
 import modelo.Produto;
+import javax.swing.JFrame;
+
 
 
 public class FrmCadastrodeProduto extends javax.swing.JFrame {
@@ -62,22 +64,25 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
         JBSalvar.setText("Atualizar");
     }
     
-    public FrmCadastrodeProduto(FrmListadeProduto telaLista, Produto produto) {
+    public FrmCadastrodeProduto(JFrame telaAnterior, Produto produto) {
         initComponents();
-        this.telaLista = telaLista;
+        this.telaAnterior = telaAnterior;
         this.produtoEmEdicao = produto;
         JCBCategoria.setEditable(false);
         carregarCategoriasDoBanco();
 
         JTFNome.setText(produto.getNome());
-        JTFUnidade.setText(String.valueOf(produto.getUnidade()));
+        JTFUnidade.setText(produto.getUnidade());
         JTFPreco.setText(String.valueOf(produto.getPreco()));
         JTFQuantidade.setText(String.valueOf(produto.getQuantidade()));
         JTFMin.setText(String.valueOf(produto.getMin()));
         JTFMax.setText(String.valueOf(produto.getMax()));
+        JCBCategoria.setSelectedItem(produto.getCategoria());
+
         JBSalvar.setText("Atualizar");
     }
 
+    private javax.swing.JFrame telaAnterior;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -218,57 +223,54 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBSalvarActionPerformed
-if (JTFNome.getText().isEmpty()||
-    JTFUnidade.getText().isEmpty()||
-    JTFPreco.getText().isEmpty()||
-    JTFQuantidade.getText().isEmpty()||    
-    JTFMin.getText().isEmpty()||
-    JTFMax.getText().isEmpty()||
-    JCBCategoria.getSelectedItem() == null) {
-    
-    JOptionPane.showMessageDialog(this,
-          "Por favor, preencha todos os campos antes de salvar.",
-          "Campos obrigatórios",
-          JOptionPane.WARNING_MESSAGE);
-    return;
-}       
+        if (JTFNome.getText().isEmpty()
+                || JTFUnidade.getText().isEmpty()
+                || JTFPreco.getText().isEmpty()
+                || JTFQuantidade.getText().isEmpty()
+                || JTFMin.getText().isEmpty()
+                || JTFMax.getText().isEmpty()
+                || JCBCategoria.getSelectedItem() == null) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Por favor, preencha todos os campos antes de salvar.",
+                    "Campos obrigatórios",
+                    JOptionPane.WARNING_MESSAGE);
+            return;
+        }
 
         try {
             double preco = Double.parseDouble(JTFPreco.getText());
             int quantidade = Integer.parseInt(JTFQuantidade.getText());
             int min = Integer.parseInt(JTFMin.getText());
             int max = Integer.parseInt(JTFMax.getText());
-            
-            if (preco < 0 || quantidade < 0){
+
+            if (preco < 0 || quantidade < 0) {
                 JOptionPane.showMessageDialog(this,
                         "Preço e quantidade não podem ser negativos.",
                         "Erro de validação",
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
-            
-           if (min > max) {
-               JOptionPane.showMessageDialog(this,
-                       "O valor mínimo não pode ser maior que o máximo.",
-                       "Erro de validação",
-               JOptionPane.ERROR_MESSAGE);
-               return;
-           }
-            
+
+            if (min > max) {
+                JOptionPane.showMessageDialog(this,
+                        "O valor mínimo não pode ser maior que o máximo.",
+                        "Erro de validação",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
             String nome = JTFNome.getText();
-            String unidade = JTFUnidade.getText();   
+            String unidade = JTFUnidade.getText();
             String categoria = JCBCategoria.getSelectedItem().toString();
-            System.out.println("Categoria selecionada no momento do salvar: " + categoria);
-            
+
             ProdutoDAO dao = new ProdutoDAO();
             boolean sucesso;
 
             if (produtoEmEdicao == null) {
-                
                 Produto novoProduto = new Produto(0, nome, unidade, preco, quantidade, min, max, categoria);
                 sucesso = dao.CadastrarProduto(novoProduto);
             } else {
-               
                 produtoEmEdicao.setNome(nome);
                 produtoEmEdicao.setUnidade(unidade);
                 produtoEmEdicao.setPreco(preco);
@@ -276,35 +278,33 @@ if (JTFNome.getText().isEmpty()||
                 produtoEmEdicao.setMin(min);
                 produtoEmEdicao.setMax(max);
                 produtoEmEdicao.setCategoria(categoria);
-
                 sucesso = dao.AtualizarProduto(produtoEmEdicao);
             }
-            
 
             if (sucesso) {
-                JOptionPane.showMessageDialog(this,
-                        "Produto cadastrado com sucesso!");
+                JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso!");
 
-                
-                if (telaLista != null) {
-                    telaLista.carregarTabelaProdutos();
-                    telaLista.setVisible(true);
+              
+                if (telaAnterior instanceof FrmListaDePreco precoTela) {
+                    precoTela.carregarTabela();
+                    precoTela.setVisible(true);
+                } else if (telaAnterior instanceof FrmListadeProduto produtoTela) {
+                    produtoTela.carregarTabelaProdutos();
+                    produtoTela.setVisible(true);
                 }
 
-                this.dispose(); 
+                this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Erro ao cadastrar produto.",
                         "Erro",
                         JOptionPane.ERROR_MESSAGE);
             }
-
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this,
                     "Erro: Preço, Quantidade, Mínimo e Máximo devem conter apenas números válidos.",
                     "Erro de validação",
                     JOptionPane.ERROR_MESSAGE);
-            System.out.println("Categoria selecionada: " + JCBCategoria.getSelectedItem());
         }
     }//GEN-LAST:event_JBSalvarActionPerformed
 

@@ -34,6 +34,7 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Controle de Estoque");
@@ -74,7 +75,7 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Versão 1.0    |    2025  ");
+        jLabel2.setText("Versão 9.9    |    2025  ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

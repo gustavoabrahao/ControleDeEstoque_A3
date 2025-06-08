@@ -26,6 +26,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         JBListaDePrecos = new javax.swing.JToggleButton();
@@ -33,6 +36,12 @@ public class FrmRelatorio extends javax.swing.JFrame {
         JBProdutos = new javax.swing.JToggleButton();
         JBQuantidade = new javax.swing.JToggleButton();
         JBFechar = new javax.swing.JToggleButton();
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -190,6 +199,9 @@ public class FrmRelatorio extends javax.swing.JFrame {
     private javax.swing.JToggleButton JBProdutos;
     private javax.swing.JToggleButton JBQuantidade;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

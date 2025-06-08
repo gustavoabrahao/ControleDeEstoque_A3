@@ -362,7 +362,7 @@ public class ProdutoDAO {
                  String nome = rs.getString("nome");
                  String unidade = rs.getString("unidade");
                  double preco = rs.getDouble("preco");
-                 int quantidade = rs.getInt("min");
+                 int quantidade = rs.getInt("quantidade");
                  int min = rs.getInt("min");
                  int max = rs.getInt("max");
                  String categoria = rs.getString("categoria");
