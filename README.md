@@ -31,34 +31,56 @@ O sistema de Controle de Estoque permite gerenciar produtos de uma empresa comer
 
 ## 📁 Estrutura do Projeto
 
-- `src/` – Códigos-fonte Java
-- `db/` – Scripts SQL para criação do banco de dados
-- `relatorios/` – Modelos de relatórios
-- `docs/` – Documentação e materiais auxiliares
+- `src/main/java/modelo` – Contém as classes de entidade como Produto, Categoria e Movimentacao.
+- `src/main/java/visao` – Responsável pelas telas e interface gráfica (Swing).
+- `src/main/java/dao` – Implementa a persistência e consultas ao banco de dados.
+- `src/main/java/principal` – Classe principal para inicialização do sistema.
+- `db/estoque.sql` – Script SQL para criação do banco de dados.
 
 ## ✅ Requisitos Funcionais
 
-- Cadastrar produtos com nome, preço unitário, unidade, quantidade mínima/máxima e categoria
-- Cadastrar categorias com nome, tamanho e tipo de embalagem
-- Realizar movimentações de estoque (entrada e saída de produtos)
-- Avisar quando a quantidade de um produto está abaixo da mínima ou acima da máxima
-- Reajustar o preço de todos os produtos por um percentual
-- Gerar relatórios:
-- Lista de Preços
-- Balanço Físico/Financeiro
-- Produtos abaixo da quantidade mínima
-- Produtos acima da quantidade máxima
-- Quantidade de produtos por categoria
-- Interface gráfica para interação com o sistema
+### RF001 - Gerenciamento de Produtos
+- **RF001.1:** Permitir o cadastro de produtos com nome, preço unitário, unidade, quantidade mínima/máxima e categoria.
+- **RF001.2:** Permitir o reajuste de preço de todos os produtos por percentual.
+
+### RF002 - Gerenciamento de Categorias
+- **RF002.1:** Permitir o cadastro de categorias com os seguintes atributos: nome, tamanho e tipo de embalagem.
+
+### RF003 - Movimentação de Estoque
+- **RF003.1:** Permitir a entrada de produtos no estoque.
+- **RF003.2:** Permitir a saída de produtos do estoque.
+- **RF003.3:** Alertar o usuário quando a quantidade de um produto estiver **abaixo da mínima** após uma movimentação.
+- **RF003.4:** Alertar o usuário quando a quantidade de um produto estiver **acima da máxima** após uma movimentação.
+
+### RF004 - Geração de Relatórios
+- **RF004.1:** Gerar relatório de **Lista de Preços**, contendo os produtos e seus respectivos preços.
+- **RF004.2:** Gerar relatório de **Balanço Físico/Financeiro**, com a quantidade em estoque, valor unitário e valor total por produto.
+- **RF004.3:** Gerar relatório de **produtos abaixo da quantidade mínima**.
+- **RF004.4:** Gerar relatório de **produtos acima da quantidade máxima**.
+- **RF004.5:** Gerar relatório com a **quantidade de produtos por categoria**.
+
+### RF005 - Interface do Sistema
+- **RF005.1:** Disponibilizar uma **interface gráfica** para interação com todas as funcionalidades do sistema.
 
 ## ❌ Requisitos Não Funcionais
 
-- Utilizar o padrão DAO para comunicação com o banco de dados
-- Garantir a persistência dos dados em um banco MySQL
-- Seguir convenções de boas práticas de codificação e organização de pacotes
-- Utilizar controle de versão com Git/GitHub de forma colaborativa
-- Código limpo, organizado e documentado
-- Sistema simples, funcional e de fácil uso
+### RNF001 - Arquitetura e Persistência
+- **RNF001.1:** Utilizar o padrão de projeto **DAO (Data Access Object)** para separar a lógica de acesso aos dados da lógica de negócios.
+- **RNF001.2:** Utilizar um banco de dados **MySQL** para garantir a persistência dos dados.
+
+### RNF002 - Qualidade e Organização do Código
+- **RNF002.1:** Seguir **boas práticas de codificação**, como nomes significativos, coesão e reutilização de código.
+- **RNF002.2:** Manter a **organização lógica de pacotes e classes** conforme padrões de desenvolvimento.
+- **RNF002.3:** Manter o código **limpo, organizado e documentado**, facilitando a manutenção.
+
+### RNF003 - Controle de Versão e Colaboração
+- **RNF003.1:** Utilizar **Git** como sistema de controle de versão.
+- **RNF003.2:** Manter o projeto organizado em um repositório **GitHub**.
+- **RNF003.3:** Aplicar práticas colaborativas como **commits frequentes** e **mensagens descritivas**.
+
+### RNF004 - Usabilidade e Simplicidade
+- **RNF004.1:** O sistema deve ser **simples, funcional e de fácil uso** para qualquer usuário.
+- **RNF004.2:** A interface gráfica deve ser **clara, intuitiva** e adequada ao fluxo de trabalho.
 
 
 ## 🎓 Objetivos Acadêmicos
@@ -73,13 +95,13 @@ Este projeto visa:
 
 ## 👥 Equipe
 
-| Nome do Aluno                    | Usuário Github  | RA do Aluno  |
-|----------------------------------|-----------------|--------------|
-| Gustavo Abrahão de Melo Carvalho | @gustavoabrahao |  1072511496  |
-| Carlos                           | @CarlosEduWeiss |  1072519046  |
-| Bernardo Mendonça Santiago       | @bnsant         |  10725116225 |
-| Roger Porton Kuntze              | @rogerpk        |  10725118527 |
-| Gabriel González Mattos          | @gabinhogmtts   |  1072517870  |
+| Nome do Aluno                    | Usuário Github  | RA do Aluno |
+|----------------------------------|-----------------|-------------|
+| Gustavo Abrahão de Melo Carvalho | @gustavoabrahao | 1072511496  |
+| Carlos Eduardo Weiss             | @CarlosEduWeiss | 1072519046  |
+| Bernardo Mendonça Santiago       | @bnsant         | 10725116225 |
+| Roger Porton Kuntze              | @rogerpk        | 10725118527 |
+| Gabriel González Mattos          | @gabinhogmtts   | 1072517870  |
 
 ## 📌 Requisitos para Rodar o Projeto
 
