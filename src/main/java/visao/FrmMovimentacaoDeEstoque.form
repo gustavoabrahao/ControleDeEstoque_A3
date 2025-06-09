@@ -76,15 +76,13 @@
               <EmptySpace pref="125" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="JBRegistrar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="JBLimpar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="JBSair" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Component id="JBVoltarME" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -121,7 +119,6 @@
                   <Component id="JBRegistrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JBLimpar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JBSair" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JBVoltarME" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
@@ -199,11 +196,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBRegistrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBLimpar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Limpar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JBLimparActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="JBSair">
       <Properties>
@@ -219,6 +222,9 @@
     <Component class="javax.swing.JSeparator" name="jSeparator2">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <Events>
+        <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jScrollPane1AncestorAdded"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
@@ -272,11 +278,6 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xf5;es recentes: "/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="JBVoltarME">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
     </Component>
   </SubComponents>

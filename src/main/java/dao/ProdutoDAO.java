@@ -314,6 +314,10 @@ public class ProdutoDAO {
                return false;
            }
            if(produto.getQuantidade() < quantidadeSaida)
+               if (produto.getQuantidade() < quantidadeSaida) {
+                   System.out.println("Quantidade insuficiente.");
+                   return false;
+               }
            
            try(Connection conn = conexao.conectar()){
                conn.setAutoCommit(false);

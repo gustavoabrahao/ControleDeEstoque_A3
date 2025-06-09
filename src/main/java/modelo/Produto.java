@@ -95,15 +95,7 @@ public class Produto{
     }
     @Override
     public String toString(){
-        return "id: "+id+
-                " nome: "+nome+
-                " Unidade: "+unidade+
-                " Preço: "+preco+
-                " Quantidade: "+quantidade+
-                " Min: "+min+
-                " Max: "+max+
-                " Categoria: "+categoria;
-               
+        return this.nome;
     }
     
     public String VerificacaoDeQuantidade(){

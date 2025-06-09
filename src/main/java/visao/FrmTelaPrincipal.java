@@ -141,8 +141,9 @@ public class FrmTelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JBProdutosActionPerformed
 
     private void JBMovimentaçãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBMovimentaçãoActionPerformed
-        FrmMovimentacaoDeEstoque telaMovimentacao = new FrmMovimentacaoDeEstoque();
-                telaMovimentacao.setVisible(true);
+        FrmMovimentacaoDeEstoque tela = new FrmMovimentacaoDeEstoque(this);
+        tela.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JBMovimentaçãoActionPerformed
 
     private void JBCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCategoriasActionPerformed

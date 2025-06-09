@@ -1,29 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
-/**
- *
- * @author chicl
- */
+
 public class RegistroMovimentacao {
+    
     private int id;
     private int produtoId;
     private String tipoMovimentacao;
     private int quantidade;
     private String observacao;
+    private String dataMovimentacao;
 
     public RegistroMovimentacao() {
     }
 
-    public RegistroMovimentacao(int id, int produtoId, String tipoMovimentacao, int quantidade, String observacao) {
+    public RegistroMovimentacao(int id, int produtoId, String tipoMovimentacao, int quantidade, String observacao, String dataMovimentacao) {
         this.id = id;
         this.produtoId = produtoId;
         this.tipoMovimentacao = tipoMovimentacao;
         this.quantidade = quantidade;
         this.observacao = observacao;
+        this.dataMovimentacao = dataMovimentacao;
     }
 
     public int getId() {
@@ -65,6 +62,15 @@ public class RegistroMovimentacao {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
+    
+    public String getDataMovimentacao() {
+    return dataMovimentacao;
+}
+
+public void setDataMovimentacao(String dataMovimentacao) {
+    this.dataMovimentacao = dataMovimentacao;
+}
+    
     @Override
     public String toString(){
         return "RegistroMovimentacao{"+
@@ -73,7 +79,8 @@ public class RegistroMovimentacao {
                 ",tipoMovimentacao="+ tipoMovimentacao +'\''+
                 "quantidade ="+quantidade+
                 "observacao="+observacao+ '\''+
-                "}";
+                ", dataMovimentacao='" + dataMovimentacao + '\'' +
+            '}';
     }
     
 }
