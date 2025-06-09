@@ -380,10 +380,38 @@ public class ProdutoDAO {
              System.out.println("Erro ao buscar a lista de produtos ordenada: "+ e.getMessage());
          }
          return listaDeProdutos;
-                 
      }
-       
-       
+     
+         public List<Produto> listarProdutosAbaixoMinMax() {
+        List<Produto> lista = new ArrayList<>();
+        String sql = "SELECT * FROM produto WHERE quantidade < min OR quantidade > max";
+
+        try (Connection conn = new Conexao().conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Produto produto = new Produto(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("unidade"),
+                        rs.getDouble("preco"),
+                        rs.getInt("quantidade"),
+                        rs.getInt("min"),
+                        rs.getInt("max"),
+                        rs.getString("categoria")
+                );
+                lista.add(produto);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar produtos abaixo do min/max: " + e.getMessage());
+        }
+
+        return lista;
+    }
+
 }
+       
+       
+
 
     
