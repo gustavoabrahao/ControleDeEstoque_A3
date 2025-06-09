@@ -17,53 +17,14 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
     
     private FrmListadeProduto telaLista;
     
-    public FrmCadastrodeProduto() {
+    public FrmCadastrodeProduto(JFrame telaAnterior) {
         initComponents();
+        this.telaAnterior = telaAnterior;
         JCBCategoria.setEditable(false);
         carregarCategoriasDoBanco();
     }
-    
-    public FrmCadastrodeProduto(FrmListadeProduto telaLista) {
-    initComponents();
-    this.telaLista = telaLista;
-    JCBCategoria.setEditable(false);
-    carregarCategoriasDoBanco();
-}
-    
-    public FrmCadastrodeProduto(String nome, String unidade, double preco, int quantidade, int min, int max, String categoria) {
-        initComponents(); 
-        JCBCategoria.setEditable(false);
-        carregarCategoriasDoBanco();
-        
-        
-        JTFNome.setText(nome);
-        JTFUnidade.setText(unidade);
-        JTFPreco.setText(String.valueOf(preco));
-        JTFQuantidade.setText(String.valueOf(quantidade));
-        JTFMin.setText(String.valueOf(min));
-        JTFMax.setText(String.valueOf(max));
-        JCBCategoria.setSelectedItem(categoria);
-        
-        
-    }
-    private Produto produtoEmEdicao;
 
-    public FrmCadastrodeProduto(Produto produto) {
-        initComponents();
-        JCBCategoria.setEditable(false);
-        this.produtoEmEdicao = produto;
-        carregarCategoriasDoBanco();
-        
-        JTFNome.setText(produto.getNome());
-        JTFUnidade.setText(String.valueOf(produto.getUnidade()));
-        JTFPreco.setText(String.valueOf(produto.getPreco()));
-        JTFQuantidade.setText(String.valueOf(produto.getQuantidade()));
-        JTFMin.setText(String.valueOf(produto.getMin()));
-        JTFMax.setText(String.valueOf(produto.getMax()));
-        JCBCategoria.setSelectedItem(produto.getCategoria());
-        JBSalvar.setText("Atualizar");
-    }
-    
+// Para edição
     public FrmCadastrodeProduto(JFrame telaAnterior, Produto produto) {
         initComponents();
         this.telaAnterior = telaAnterior;
@@ -78,10 +39,13 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
         JTFMin.setText(String.valueOf(produto.getMin()));
         JTFMax.setText(String.valueOf(produto.getMax()));
         JCBCategoria.setSelectedItem(produto.getCategoria());
-
         JBSalvar.setText("Atualizar");
     }
-
+        
+        
+    
+    private Produto produtoEmEdicao;
+    
     private javax.swing.JFrame telaAnterior;
 
     @SuppressWarnings("unchecked")
@@ -282,18 +246,17 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
             }
 
             if (sucesso) {
-                JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso!");
+                JOptionPane.showMessageDialog(this,
+                        produtoEmEdicao == null ? "Produto cadastrado com sucesso!" : "Produto atualizado com sucesso!");
 
-              
                 if (telaAnterior instanceof FrmListaDePreco precoTela) {
-                    precoTela.carregarTabela();
+                    precoTela.carregarTabela(); 
                     precoTela.setVisible(true);
                 } else if (telaAnterior instanceof FrmListadeProduto produtoTela) {
-                    produtoTela.carregarTabelaProdutos();
+                    produtoTela.carregarTabelaProdutos(); 
                     produtoTela.setVisible(true);
                 }
-
-                this.dispose();
+                this.dispose(); 
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Erro ao cadastrar produto.",
@@ -342,7 +305,7 @@ public class FrmCadastrodeProduto extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmCadastrodeProduto().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrmCadastrodeProduto((javax.swing.JFrame) null, null).setVisible(true));
     }
     
     private void carregarCategoriasDoBanco() {

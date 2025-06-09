@@ -35,9 +35,9 @@
                       <Component id="JLBuscar" min="-2" pref="46" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="JTFBuscar" min="-2" pref="130" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="JLCategoria" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="JCBCategoria" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="JBFiltrar" min="-2" max="-2" attributes="0"/>
@@ -117,7 +117,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="JLCategoria">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Categoria"/>
+        <Property name="text" type="java.lang.String" value="Categoria:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="JTFBuscar">
