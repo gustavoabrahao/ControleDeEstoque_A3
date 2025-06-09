@@ -408,7 +408,24 @@ public class ProdutoDAO {
 
         return lista;
     }
+    public List<String[]> listarQuantidadePorCategoria() {
+        List<String[]> lista = new ArrayList<>();
+        String sql = "SELECT categoria, COUNT(*) AS total FROM produto GROUP BY categoria ORDER BY categoria";
 
+        try (Connection conn = new Conexao().conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                String categoria = rs.getString("categoria");
+                String total = String.valueOf(rs.getInt("total"));
+                lista.add(new String[]{categoria, total});
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao contar produtos por categoria: " + e.getMessage());
+        }
+
+        return lista;
+    }
 }
        
        

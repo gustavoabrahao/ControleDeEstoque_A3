@@ -137,8 +137,8 @@ public class FrmRelatorio extends javax.swing.JFrame {
     }//GEN-LAST:event_JBProdutosAbaixoActionPerformed
 
     private void JBQuantidadeProdutoCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBQuantidadeProdutoCategoriaActionPerformed
-       FrmQuantidadeDeProduto objeto = new FrmQuantidadeDeProduto();
-       objeto.setVisible(true);
+        new FrmQuantidadeDeProduto(this).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_JBQuantidadeProdutoCategoriaActionPerformed
 
     
