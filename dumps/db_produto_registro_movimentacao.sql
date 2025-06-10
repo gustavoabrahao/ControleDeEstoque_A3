@@ -28,6 +28,7 @@ CREATE TABLE `registro_movimentacao` (
   `tipo_movimentacao` varchar(10) NOT NULL,
   `quantidade` int NOT NULL,
   `observacao` varchar(255) DEFAULT NULL,
+  `data_movimentacao` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `produto_id` (`produto_id`),
   CONSTRAINT `registro_movimentacao_ibfk_1` FOREIGN KEY (`produto_id`) REFERENCES `produto` (`id`)
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-06-08 18:40:30
+-- Dump completed on 2025-06-10 15:53:42
