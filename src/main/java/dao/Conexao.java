@@ -16,10 +16,10 @@ public class Conexao {
     public Conexao() {
         this.DRIVER = "com.mysql.cj.jdbc.Driver";
         this.SERVER = "localhost";
-        this.DATABASE = "db_produto";
+        this.DATABASE = "estoque";
         this.URL = "jdbc:mysql://" + SERVER + ":3306/" + DATABASE + "?useTimezone=true&serverTimezone=UTC";
         this.USER = "root";
-        this.PASSWORD = "TrabalhoA3";
+        this.PASSWORD = "Biel230902";
     }
 
     public Connection conectar() {
