@@ -19,7 +19,7 @@ public class Conexao {
         this.DATABASE = "estoque";
         this.URL = "jdbc:mysql://" + SERVER + ":3306/" + DATABASE + "?useTimezone=true&serverTimezone=UTC";
         this.USER = "root";
-        this.PASSWORD = "Biel230902";
+        this.PASSWORD = "TrabalhoA3";
     }
 
     public Connection conectar() {
